@@ -9,9 +9,9 @@ interface Shape {
 
 /**
  * Каратистская 3D-сцена для Hero: татами-сетка, парящие иероглифы
- * 空手道 (каратэ-до) и красный энсо — все элементы рисуются на
+ * 空手道 (каратэ-до) и красный энсо - все элементы рисуются на
  * canvas-текстурах, без внешних ассетов и пост-процессинга.
- * Three.js подгружается динамически — отдельным чанком.
+ * Three.js подгружается динамически - отдельным чанком.
  */
 export function Hero3D() {
   const mountRef = useRef<HTMLDivElement>(null)
@@ -115,7 +115,7 @@ function initScene(THREE: typeof import('three'), mount: HTMLDivElement): () => 
 
   const shapes: Shape[] = []
 
-  // Энсо (красный дзэн-круг) — самый дальний слой
+  // Энсо (красный дзэн-круг) - самый дальний слой
   const enso = makeEnso(THREE, 5.2)
   enso.position.set(1.1, 1.0, -3.6)
   scene.add(enso)

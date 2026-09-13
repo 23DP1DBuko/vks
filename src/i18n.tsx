@@ -29,7 +29,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     try {
       window.localStorage.setItem(STORAGE_KEY, next)
     } catch {
-      /* localStorage может быть недоступен — игнорируем */
+      /* localStorage может быть недоступен - игнорируем */
     }
   }
 

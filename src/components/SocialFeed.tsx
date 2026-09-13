@@ -6,7 +6,7 @@ import { useLang } from '../i18n'
 import { Container, Section, SectionHeader } from './Section'
 
 /**
- * Лента Facebook (Page Plugin) загружается лениво — только когда секция
+ * Лента Facebook (Page Plugin) загружается лениво - только когда секция
  * подходит к вьюпорту. Если плагин не загрузился (блокировщики, сеть),
  * показываем кнопки-ссылки на соцсети.
  * TODO: при необходимости заменить на Graph API с кэшем для единого стиля.
@@ -56,7 +56,7 @@ export function SocialFeed() {
 
           {loaded && !failed && (
             <iframe
-              title="Facebook — Vasilyev Karate"
+              title="Facebook - Vasilyev Karate"
               src={embedSrc}
               className="h-[560px] w-full rounded-2xl border border-white/10 bg-white"
               style={{ border: 0 }}
@@ -70,9 +70,9 @@ export function SocialFeed() {
             <div className="flex flex-col items-center gap-3 rounded-2xl border border-white/10 bg-ink-2 p-8">
               <p className="text-sm text-white/60">
                 {t({
-                  ru: 'Лента недоступна — подписывайтесь в соцсетях:',
-                  en: 'Feed unavailable — follow us on social media:',
-                  lv: 'Lente nav pieejama — sekojiet mums sociālajos tīklos:',
+                  ru: 'Лента недоступна - подписывайтесь в соцсетях:',
+                  en: 'Feed unavailable - follow us on social media:',
+                  lv: 'Lente nav pieejama - sekojiet mums sociālajos tīklos:',
                 })}
               </p>
               {renderFollowButtons()}

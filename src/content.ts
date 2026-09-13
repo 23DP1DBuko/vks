@@ -39,9 +39,9 @@ export const DAY_NAMES: Record<DayKey, Localized> = {
 
 export const PROGRAM_TAGS: { id: ProgramTag | 'all'; label: Localized }[] = [
   { id: 'all', label: { ru: 'Все', en: 'All', lv: 'Visi' } },
-  { id: 'kids-4-6', label: { ru: '4–6 лет', en: 'Age 4–6', lv: '4–6 gadi' } },
-  { id: 'kids-7-12', label: { ru: '7–12 лет', en: 'Age 7–12', lv: '7–12 gadi' } },
-  { id: 'teens', label: { ru: '13–16 лет', en: 'Age 13–16', lv: '13–16 gadi' } },
+  { id: 'kids-4-6', label: { ru: '4-6 лет', en: 'Age 4-6', lv: '4-6 gadi' } },
+  { id: 'kids-7-12', label: { ru: '7-12 лет', en: 'Age 7-12', lv: '7-12 gadi' } },
+  { id: 'teens', label: { ru: '13-16 лет', en: 'Age 13-16', lv: '13-16 gadi' } },
   { id: 'adults', label: { ru: 'Взрослые', en: 'Adults', lv: 'Pieaugušie' } },
   { id: 'competition', label: { ru: 'Соревновательная', en: 'Competition', lv: 'Sacensību' } },
 ]
@@ -54,27 +54,27 @@ export const SECTIONS: Record<
     kicker: { ru: '01 · Преимущества', en: '01 · Advantages', lv: '01 · Priekšrocības' },
     title: { ru: 'Почему именно наш клуб', en: 'Why choose our club', lv: 'Kāpēc izvēlēties mūsu klubu' },
     subtitle: {
-      ru: 'Школа с историей и сертифицированными тренерами — карате, которому доверяют уже более 40 лет.',
-      en: 'A school with history and certified coaches — karate trusted for over 40 years.',
-      lv: 'Skola ar vēsturi un sertificētiem treneriem — karatē, kam uzticas jau vairāk nekā 40 gadus.',
+      ru: 'Школа с историей и сертифицированными тренерами - карате, которому доверяют уже более 40 лет.',
+      en: 'A school with history and certified coaches - karate trusted for over 40 years.',
+      lv: 'Skola ar vēsturi un sertificētiem treneriem - karatē, kam uzticas jau vairāk nekā 40 gadus.',
     },
   },
   programs: {
     kicker: { ru: '02 · Группы', en: '02 · Groups', lv: '02 · Grupas' },
     title: { ru: 'Программы и возрастные группы', en: 'Programs & age groups', lv: 'Programmas un vecuma grupas' },
     subtitle: {
-      ru: 'Заниматься можно с 4 лет — от игровых тренировок для малышей до соревновательной группы.',
-      en: 'Train from age 4 — from play-based classes for little ones to a competition group.',
-      lv: 'Trenēties var no 4 gadu vecuma — no rotaļu nodarbībām mazākajiem līdz sacensību grupai.',
+      ru: 'Заниматься можно с 4 лет - от игровых тренировок для малышей до соревновательной группы.',
+      en: 'Train from age 4 - from play-based classes for little ones to a competition group.',
+      lv: 'Trenēties var no 4 gadu vecuma - no rotaļu nodarbībām mazākajiem līdz sacensību grupai.',
     },
   },
   halls: {
     kicker: { ru: '03 · Залы', en: '03 · Halls', lv: '03 · Zāles' },
     title: { ru: 'Залы и расписание', en: 'Halls & schedule', lv: 'Treniņu zāles un grafiks' },
     subtitle: {
-      ru: 'Два зала в Риге (Кенгарагс) — выберите тот, что ближе к дому.',
-      en: 'Two halls in Riga (Ķengarags) — pick the one closest to home.',
-      lv: 'Divas zāles Rīgā (Ķengaragā) — izvēlieties to, kas tuvāk mājām.',
+      ru: 'Два зала в Риге (Кенгарагс) - выберите тот, что ближе к дому.',
+      en: 'Two halls in Riga (Ķengarags) - pick the one closest to home.',
+      lv: 'Divas zāles Rīgā (Ķengaragā) - izvēlieties to, kas tuvāk mājām.',
     },
   },
   coaches: {
@@ -90,9 +90,9 @@ export const SECTIONS: Record<
     kicker: { ru: '05 · Результаты', en: '05 · Results', lv: '05 · Rezultāti' },
     title: { ru: 'Достижения и мероприятия', en: 'Achievements & events', lv: 'Sasniegumi un pasākumi' },
     subtitle: {
-      ru: 'Турниры, лагеря и аттестации — наши ученики регулярно выступают и подтверждают уровень.',
-      en: 'Tournaments, camps and belt exams — our students compete and prove their level.',
-      lv: 'Turnīri, nometnes un jostu eksāmeni — mūsu audzēkņi regulāri startē un apliecina līmeni.',
+      ru: 'Турниры, лагеря и аттестации - наши ученики регулярно выступают и подтверждают уровень.',
+      en: 'Tournaments, camps and belt exams - our students compete and prove their level.',
+      lv: 'Turnīri, nometnes un jostu eksāmeni - mūsu audzēkņi regulāri startē un apliecina līmeni.',
     },
   },
   reviews: {
@@ -108,9 +108,9 @@ export const SECTIONS: Record<
     kicker: { ru: '07 · Новости', en: '07 · News', lv: '07 · Jaunumi' },
     title: { ru: 'Жизнь клуба', en: 'Club life', lv: 'Kluba dzīve' },
     subtitle: {
-      ru: 'Свежие новости, фото и видео — прямо из наших соцсетей.',
-      en: 'Latest news, photos and videos — straight from our social media.',
-      lv: 'Jaunākās ziņas, fotogrāfijas un video — tieši no mūsu sociālajiem tīkliem.',
+      ru: 'Свежие новости, фото и видео - прямо из наших соцсетей.',
+      en: 'Latest news, photos and videos - straight from our social media.',
+      lv: 'Jaunākās ziņas, fotogrāfijas un video - tieši no mūsu sociālajiem tīkliem.',
     },
     // замечание: заголовки секций social/pricing/faq/contacts переопределены ниже в content
   },
@@ -118,27 +118,27 @@ export const SECTIONS: Record<
     kicker: { ru: '08 · Тарифы', en: '08 · Pricing', lv: '08 · Cenas' },
     title: { ru: 'Стоимость и условия', en: 'Pricing & terms', lv: 'Cenas un nosacījumi' },
     subtitle: {
-      ru: 'Первая тренировка — бесплатно. Начните без обязательств, а стоимость подскажем по телефону.',
-      en: 'Your first class is free — start with no commitment; the price is one phone call away.',
-      lv: 'Pirmā nodarbība — bez maksas. Sāciet bez saistībām, cenu pateiksim pa tālruni.',
+      ru: 'Первая тренировка - бесплатно. Начните без обязательств, а стоимость подскажем по телефону.',
+      en: 'Your first class is free - start with no commitment; the price is one phone call away.',
+      lv: 'Pirmā nodarbība - bez maksas. Sāciet bez saistībām, cenu pateiksim pa tālruni.',
     },
   },
   faq: {
     kicker: { ru: '09 · Вопросы', en: '09 · Questions', lv: '09 · Jautājumi' },
     title: { ru: 'Вопросы и ответы', en: 'FAQ', lv: 'Biežāk uzdotie jautājumi' },
     subtitle: {
-      ru: 'Безопасность, экипировка, пропуски, соревнования — отвечаем на главные вопросы.',
-      en: 'Safety, gear, missed classes, competitions — answers to the main questions.',
-      lv: 'Drošība, ekipējums, izlaistas nodarbības, sacensības — atbildes uz galvenajiem jautājumiem.',
+      ru: 'Безопасность, экипировка, пропуски, соревнования - отвечаем на главные вопросы.',
+      en: 'Safety, gear, missed classes, competitions - answers to the main questions.',
+      lv: 'Drošība, ekipējums, izlaistas nodarbības, sacensības - atbildes uz galvenajiem jautājumiem.',
     },
   },
   contacts: {
     kicker: { ru: '10 · Контакты', en: '10 · Contacts', lv: '10 · Kontakti' },
     title: { ru: 'Контакты', en: 'Contacts', lv: 'Kontakti' },
     subtitle: {
-      ru: 'Напишите нам или оставьте заявку — мы ответим в течение дня.',
-      en: 'Write to us or leave a request — we will reply within a day.',
-      lv: 'Rakstiet mums vai atstājiet pieprasījumu — atbildēsim dienas laikā.',
+      ru: 'Напишите нам или оставьте заявку - мы ответим в течение дня.',
+      en: 'Write to us or leave a request - we will reply within a day.',
+      lv: 'Rakstiet mums vai atstājiet pieprasījumu - atbildēsim dienas laikā.',
     },
   },
 }
@@ -154,9 +154,9 @@ export const content = {
     tagline: { ru: 'Карате в Риге с 1984 года', en: 'Karate in Riga since 1984', lv: 'Karatē Rīgā kopš 1984. gada' } as Localized,
     meta: {
       title: {
-        ru: 'Vasilyev Karate Club — Карате в Риге с 1984 года',
-        en: 'Vasilyev Karate Club — Karate in Riga since 1984',
-        lv: 'Vasiljeva karatē klubs — Karatē Rīgā kopš 1984. gada',
+        ru: 'Vasilyev Karate Club - Карате в Риге с 1984 года',
+        en: 'Vasilyev Karate Club - Karate in Riga since 1984',
+        lv: 'Vasiljeva karatē klubs - Karatē Rīgā kopš 1984. gada',
       },
       description: {
         ru: 'Карате для детей с 4 лет и взрослых в Риге. Два зала, первая тренировка бесплатно, тренеры 8 дан и 5 дан.',
@@ -168,9 +168,9 @@ export const content = {
 
   hero: {
     title: {
-      ru: 'Карате в Риге для детей и взрослых — с 1984 года',
-      en: 'Karate in Riga for kids and adults — since 1984',
-      lv: 'Karatē Rīgā bērniem un pieaugušajiem — kopš 1984. gada',
+      ru: 'Карате в Риге для детей и взрослых - с 1984 года',
+      en: 'Karate in Riga for kids and adults - since 1984',
+      lv: 'Karatē Rīgā bērniem un pieaugušajiem - kopš 1984. gada',
     } as Localized,
     slogan: {
       ru: 'Приходи и присоединяйся к команде!',
@@ -178,14 +178,14 @@ export const content = {
       lv: 'Nāc un pievienojies komandai!',
     } as Localized,
     subtitle: {
-      ru: 'Мастера клуба: Леонид Васильев — 8 дан, Жанна Васильева — 5 дан. Группы с 4 лет, два зала в Риге, бесплатное пробное занятие.',
-      en: 'Club masters: Leonid Vasilyev — 8th dan, Zhanna Vasilyeva — 5th dan. Groups from age 4, two halls in Riga, free trial class.',
-      lv: 'Kluba meistari: Leonīds Vasiļjevs — 8. dans, Žanna Vasiļjeva — 5. dans. Grupas no 4 gadu vecuma, divas zāles Rīgā, bezmaksas izmēģinājuma nodarbība.',
+      ru: 'Мастера клуба: Леонид Васильев - 8 дан, Жанна Васильева - 5 дан. Группы с 4 лет, два зала в Риге, бесплатное пробное занятие.',
+      en: 'Club masters: Leonid Vasilyev - 8th dan, Zhanna Vasilyeva - 5th dan. Groups from age 4, two halls in Riga, free trial class.',
+      lv: 'Kluba meistari: Leonīds Vasiļjevs - 8. dans, Žanna Vasiļjeva - 5. dans. Grupas no 4 gadu vecuma, divas zāles Rīgā, bezmaksas izmēģinājuma nodarbība.',
     } as Localized,
     paragraph: {
-      ru: 'Помогаем детям расти сильными и уверенными, а взрослым — найти форму и дисциплину. Приходите на пробную тренировку и убедитесь сами.',
+      ru: 'Помогаем детям расти сильными и уверенными, а взрослым - найти форму и дисциплину. Приходите на пробную тренировку и убедитесь сами.',
       en: 'We help children grow strong and confident, and adults find fitness and discipline. Come to a trial class and see for yourself.',
-      lv: 'Palīdzam bērniem augt stipriem un pārliecinātiem, bet pieaugušajiem — iegūt formu un disciplīnu. Nāciet uz izmēģinājuma nodarbību un pārliecinieties paši.',
+      lv: 'Palīdzam bērniem augt stipriem un pārliecinātiem, bet pieaugušajiem - iegūt formu un disciplīnu. Nāciet uz izmēģinājuma nodarbību un pārliecinieties paši.',
     } as Localized,
     cta1: {
       ru: 'Записаться на бесплатную первую тренировку',
@@ -206,7 +206,7 @@ export const content = {
       { value: 1984, suffix: '', label: { ru: 'год основания', en: 'founded', lv: 'dibināts' } },
       { value: 8, suffix: ' дан', label: { ru: 'высшая степень тренера', en: 'highest coach rank', lv: 'augstākā trenera pakāpe' } },
       { value: 2, suffix: '', label: { ru: 'зала в Риге', en: 'halls in Riga', lv: 'zāles Rīgā' } },
-      { value: 4, suffix: '+', label: { ru: 'лет — приём с 4 лет', en: 'years — start at 4', lv: 'gadi — sākums no 4' } },
+      { value: 4, suffix: '+', label: { ru: 'лет - приём с 4 лет', en: 'years - start at 4', lv: 'gadi - sākums no 4' } },
     ] as Stat[],
     values: [
       { ru: 'Здоровье', en: 'Health', lv: 'Veselība' },
@@ -222,9 +222,9 @@ export const content = {
       icon: 'award',
       title: { ru: 'Мастера высшей категории', en: 'Masters of the highest rank', lv: 'Augstākās kategorijas meistari' },
       text: {
-        ru: 'Клуб основал Леонид Васильев — 8 дан, обладатель одной из высших степеней в Латвии; занятия ведут сертифицированные тренеры.',
-        en: 'The club was founded by Leonid Vasilyev — 8th dan, one of the highest ranks in Latvia; classes are led by certified coaches.',
-        lv: 'Klubu dibināja Leonīds Vasiļjevs — 8. dans, viena no augstākajām pakāpēm Latvijā; nodarbības vada sertificēti treneri.',
+        ru: 'Клуб основал Леонид Васильев - 8 дан, обладатель одной из высших степеней в Латвии; занятия ведут сертифицированные тренеры.',
+        en: 'The club was founded by Leonid Vasilyev - 8th dan, one of the highest ranks in Latvia; classes are led by certified coaches.',
+        lv: 'Klubu dibināja Leonīds Vasiļjevs - 8. dans, viena no augstākajām pakāpēm Latvijā; nodarbības vada sertificēti treneri.',
       },
     },
     {
@@ -232,9 +232,9 @@ export const content = {
       icon: 'history',
       title: { ru: 'Опыт с 1984 года', en: 'Since 1984', lv: 'Kopš 1984. gada' },
       text: {
-        ru: 'Более 40 лет учим карате детей и взрослых в Риге — школа с историей и традициями.',
-        en: 'Over 40 years of teaching karate to kids and adults in Riga — a school with history and tradition.',
-        lv: 'Vairāk nekā 40 gadus mācām karatē bērniem un pieaugušajiem Rīgā — skola ar vēsturi un tradīcijām.',
+        ru: 'Более 40 лет учим карате детей и взрослых в Риге - школа с историей и традициями.',
+        en: 'Over 40 years of teaching karate to kids and adults in Riga - a school with history and tradition.',
+        lv: 'Vairāk nekā 40 gadus mācām karatē bērniem un pieaugušajiem Rīgā - skola ar vēsturi un tradīcijām.',
       },
     },
     {
@@ -262,9 +262,9 @@ export const content = {
       icon: 'trophy',
       title: { ru: 'Соревновательная практика', en: 'Competition practice', lv: 'Sacensību prakse' },
       text: {
-        ru: 'Регулярно выступаем на турнирах Латвии и международных соревнованиях — участие по желанию.',
-        en: 'Regular participation in Latvian and international tournaments — participation is optional.',
-        lv: 'Regulāri piedalāmies Latvijas un starptautiskos turnīros — dalība pēc vēlēšanās.',
+        ru: 'Регулярно выступаем на турнирах Латвии и международных соревнованиях - участие по желанию.',
+        en: 'Regular participation in Latvian and international tournaments - participation is optional.',
+        lv: 'Regulāri piedalāmies Latvijas un starptautiskos turnīros - dalība pēc vēlēšanās.',
       },
     },
     {
@@ -272,7 +272,7 @@ export const content = {
       icon: 'target',
       title: { ru: 'Дисциплина и характер', en: 'Discipline and character', lv: 'Disciplīna un raksturs' },
       text: {
-        ru: 'Карате — это не только спорт: воспитываем уважение, собранность и уверенность в себе.',
+        ru: 'Карате - это не только спорт: воспитываем уважение, собранность и уверенность в себе.',
         en: 'Karate is more than sport: we build respect, focus and self-confidence.',
         lv: 'Karatē ir vairāk nekā sports: audzinām cieņu, savaldību un pašapziņu.',
       },
@@ -282,8 +282,8 @@ export const content = {
   programs: [
     {
       id: 'kids-4-6',
-      ageGroup: '4–6',
-      title: { ru: 'Малыши 4–6 лет', en: 'Little ones 4–6', lv: 'Mazākie 4–6 gadi' },
+      ageGroup: '4-6',
+      title: { ru: 'Малыши 4-6 лет', en: 'Little ones 4-6', lv: 'Mazākie 4-6 gadi' },
       description: {
         ru: 'Карате и общая физическая подготовка в игровой форме: координация, гибкость, привычка к дисциплине.',
         en: 'Karate and general fitness through play: coordination, flexibility and good habits.',
@@ -295,20 +295,20 @@ export const content = {
     },
     {
       id: 'kids-7-12',
-      ageGroup: '7–12',
-      title: { ru: 'Дети 7–12 лет', en: 'Kids 7–12', lv: 'Bērni 7–12 gadi' },
+      ageGroup: '7-12',
+      title: { ru: 'Дети 7-12 лет', en: 'Kids 7-12', lv: 'Bērni 7-12 gadi' },
       description: {
         ru: 'Базовая техника, ката и лёгкое кумите, подготовка к поясам и первым турнирам.',
         en: 'Basic technique, kata and light kumite, preparation for belts and first tournaments.',
         lv: 'Pamattehnika, kata un viegls kumite, sagatavošanās jostām un pirmajiem turnīriem.',
       },
-      sessions: { ru: '2–3 раза в неделю', en: '2–3× per week', lv: '2–3× nedēļā' },
+      sessions: { ru: '2-3 раза в неделю', en: '2-3× per week', lv: '2-3× nedēļā' },
       tag: 'kids-7-12',
     },
     {
       id: 'teens',
-      ageGroup: '13–16',
-      title: { ru: 'Подростки 13–16 лет', en: 'Teens 13–16', lv: 'Pusaudži 13–16 gadi' },
+      ageGroup: '13-16',
+      title: { ru: 'Подростки 13-16 лет', en: 'Teens 13-16', lv: 'Pusaudži 13-16 gadi' },
       description: {
         ru: 'Углублённая техника, физическая подготовка, соревновательный режим по желанию.',
         en: 'Advanced technique, physical conditioning, optional competitive track.',
@@ -338,7 +338,7 @@ export const content = {
         en: 'For those who want to compete: intensive training, camps and training sessions.',
         lv: 'Tiem, kas vēlas startēt: intensīvi treniņi, nometnes un treniņsalidojumi.',
       },
-      sessions: { ru: '3–5 раз в неделю + сборы', en: '3–5× per week + camps', lv: '3–5× nedēļā + nometnes' },
+      sessions: { ru: '3-5 раз в неделю + сборы', en: '3-5× per week + camps', lv: '3-5× nedēļā + nometnes' },
       tag: 'competition',
     },
   ] as Program[],
@@ -346,7 +346,7 @@ export const content = {
   halls: [
     {
       id: 'hall-1',
-      name: { ru: 'Зал 1 — Ikšķiles iela 6', en: 'Hall 1 — Ikšķiles iela 6', lv: '1. zāle — Ikšķiles iela 6' },
+      name: { ru: 'Зал 1 - Ikšķiles iela 6', en: 'Hall 1 - Ikšķiles iela 6', lv: '1. zāle - Ikšķiles iela 6' },
       address: 'Rīgas 72. vidusskola, малый спортзал, 3-й этаж · LV-1057',
       description: {
         ru: 'Основной зал клуба в спортивном зале школы. Рядом остановки общественного транспорта и парковка.',
@@ -354,16 +354,16 @@ export const content = {
         lv: 'Kluba galvenā zāle skolas sporta zālē. Blakus sabiedriskā transporta pieturas un autostāvvieta.',
       },
       schedule: [
-        { day: 'mon', time: '17:00–20:00' },
-        { day: 'wed', time: '17:00–20:00' },
-        { day: 'fri', time: '17:00–20:00' },
-        { day: 'sat', time: '10:00–13:00' },
+        { day: 'mon', time: '17:00-20:00' },
+        { day: 'wed', time: '17:00-20:00' },
+        { day: 'fri', time: '17:00-20:00' },
+        { day: 'sat', time: '10:00-13:00' },
       ],
       mapUrl: 'https://www.google.com/maps/search/?api=1&query=Ik%C5%A1%C4%B7iles+iela+6,+R%C4%ABga',
     },
     {
       id: 'hall-2',
-      name: { ru: 'Зал 2 — Latgales iela 322', en: 'Hall 2 — Latgales iela 322', lv: '2. zāle — Latgales iela 322' },
+      name: { ru: 'Зал 2 - Latgales iela 322', en: 'Hall 2 - Latgales iela 322', lv: '2. zāle - Latgales iela 322' },
       address: 'Latgales iela 322, Rīga · LV-1057',
       description: {
         ru: 'Второй зал клуба, группы детей и взрослых. Удобно добираться из центра и Кенгарагса.',
@@ -371,9 +371,9 @@ export const content = {
         lv: 'Kluba otrā zāle bērnu un pieaugušo grupām. Ērta piekļuve no centra un Ķengaraga.',
       },
       schedule: [
-        { day: 'tue', time: '17:00–20:00' },
-        { day: 'thu', time: '17:00–20:00' },
-        { day: 'sat', time: '13:00–16:00' },
+        { day: 'tue', time: '17:00-20:00' },
+        { day: 'thu', time: '17:00-20:00' },
+        { day: 'sat', time: '13:00-16:00' },
       ],
       mapUrl: 'https://www.google.com/maps/search/?api=1&query=Latgales+iela+322,+R%C4%ABga',
     },
@@ -478,9 +478,9 @@ export const content = {
       year: { ru: 'Ежегодно', en: 'Every year', lv: 'Katru gadu' },
       title: { ru: 'Экзамены на пояса (кю)', en: 'Belt exams (kyu)', lv: 'Jostu eksāmeni (kju)' },
       result: {
-        ru: 'Дважды в год — официальная аттестация учеников.',
-        en: 'Twice a year — official certification of students.',
-        lv: 'Divas reizes gadā — oficiāla audzēkņu atestācija.',
+        ru: 'Дважды в год - официальная аттестация учеников.',
+        en: 'Twice a year - official certification of students.',
+        lv: 'Divas reizes gadā - oficiāla audzēkņu atestācija.',
       },
       type: 'exam',
     },
@@ -499,9 +499,9 @@ export const content = {
       author: 'Anna',
       role: { ru: 'мама Саши (7 лет)', en: "Sasha's mum (age 7)", lv: 'Sašas mamma (7 gadi)' },
       text: {
-        ru: 'Сын занимается уже два года — стал собраннее, увереннее, и это его любимое занятие недели. Тренеры внимательные, всегда на связи.',
-        en: "My son has trained for two years — he's become more focused and confident, and it's the highlight of his week. Coaches are attentive and always in touch.",
-        lv: 'Dēls trenējas jau divus gadus — kļuvis savāktāks un pārliecinātāks, un tā ir viņa mīļākā nedēļas nodarbība. Treneri ir uzmanīgi un vienmēr sazinās.',
+        ru: 'Сын занимается уже два года - стал собраннее, увереннее, и это его любимое занятие недели. Тренеры внимательные, всегда на связи.',
+        en: "My son has trained for two years - he's become more focused and confident, and it's the highlight of his week. Coaches are attentive and always in touch.",
+        lv: 'Dēls trenējas jau divus gadus - kļuvis savāktāks un pārliecinātāks, un tā ir viņa mīļākā nedēļas nodarbība. Treneri ir uzmanīgi un vienmēr sazinās.',
       },
       rating: 5,
     },
@@ -510,9 +510,9 @@ export const content = {
       author: 'Igor',
       role: { ru: '34 года', en: '34 years old', lv: '34 gadi' },
       text: {
-        ru: 'Начал с нуля в 33 — никогда не поздно. Отличная атмосфера, грамотная техника, за полгода заметно подтянулся и физически, и морально.',
-        en: "Started from zero at 33 — it's never too late. Great atmosphere, solid technique; in six months I've noticeably improved physically and mentally.",
-        lv: 'Sāku no nulles 33 gadu vecumā — nekad nav par vēlu. Lieliska atmosfēra, pamatīga tehnika; pusgada laikā manāmi uzlabojusies gan fiziskā, gan garīgā forma.',
+        ru: 'Начал с нуля в 33 - никогда не поздно. Отличная атмосфера, грамотная техника, за полгода заметно подтянулся и физически, и морально.',
+        en: "Started from zero at 33 - it's never too late. Great atmosphere, solid technique; in six months I've noticeably improved physically and mentally.",
+        lv: 'Sāku no nulles 33 gadu vecumā - nekad nav par vēlu. Lieliska atmosfēra, pamatīga tehnika; pusgada laikā manāmi uzlabojusies gan fiziskā, gan garīgā forma.',
       },
       rating: 5,
     },
@@ -532,9 +532,9 @@ export const content = {
       author: 'Dmitry',
       role: { ru: 'папа Марка (10 лет)', en: "Mark's dad (age 10)", lv: 'Marka tētis (10 gadi)' },
       text: {
-        ru: 'Марк начал выступать на турнирах — у клуба серьёзная соревновательная подготовка. Расписание удобное, два зала рядом с домом.',
-        en: "Mark has started competing — the club has serious competitive training. The schedule is convenient and the two halls are close to home.",
-        lv: 'Marks sācis startēt turnīros — klubam ir nopietna sacensību sagatavošana. Ērts grafiks, abas zāles netālu no mājām.',
+        ru: 'Марк начал выступать на турнирах - у клуба серьёзная соревновательная подготовка. Расписание удобное, два зала рядом с домом.',
+        en: "Mark has started competing - the club has serious competitive training. The schedule is convenient and the two halls are close to home.",
+        lv: 'Marks sācis startēt turnīros - klubam ir nopietna sacensību sagatavošana. Ērts grafiks, abas zāles netālu no mājām.',
       },
       rating: 5,
     },
@@ -543,9 +543,9 @@ export const content = {
       author: 'Elena',
       role: { ru: '28 лет', en: '28 years old', lv: '28 gadi' },
       text: {
-        ru: 'Искала спорт без скучных тренажёров — карате дало и нагрузку, и технику самообороны, и интерес. Новичкам здесь рады.',
-        en: 'I wanted sport without boring gym machines — karate gives me a workout, self-defence skills and real interest. Beginners are welcome here.',
-        lv: 'Meklēju sportu bez garlaicīgiem trenažieriem — karatē dod gan slodzi, gan pašaizsardzības tehniku, gan interesi. Iesācējiem šeit priecājas.',
+        ru: 'Искала спорт без скучных тренажёров - карате дало и нагрузку, и технику самообороны, и интерес. Новичкам здесь рады.',
+        en: 'I wanted sport without boring gym machines - karate gives me a workout, self-defence skills and real interest. Beginners are welcome here.',
+        lv: 'Meklēju sportu bez garlaicīgiem trenažieriem - karatē dod gan slodzi, gan pašaizsardzības tehniku, gan interesi. Iesācējiem šeit priecājas.',
       },
       rating: 5,
     },
@@ -556,7 +556,7 @@ export const content = {
     provider: 'facebook' as const,
     pageUrl: 'https://www.facebook.com/eurokaratedo',
     text: {
-      ru: 'Мы регулярно публикуем фото и видео тренировок, турниров и мероприятий. Листайте ленту или подписывайтесь — будьте в курсе жизни клуба.',
+      ru: 'Мы регулярно публикуем фото и видео тренировок, турниров и мероприятий. Листайте ленту или подписывайтесь - будьте в курсе жизни клуба.',
       en: 'We regularly share photos and videos of training, tournaments and events. Scroll the feed or follow us to keep up with club life.',
       lv: 'Regulāri publicējam treniņu, turnīru un pasākumu fotogrāfijas un video. Šķirstiet lenti vai sekojiet mums, lai būtu lietas kursā.',
     } as Localized,
@@ -570,11 +570,11 @@ export const content = {
 
   pricing: {
     trial: {
-      title: { ru: 'Первая тренировка — бесплатно', en: 'First class — free', lv: 'Pirmā nodarbība — bez maksas' },
+      title: { ru: 'Первая тренировка - бесплатно', en: 'First class - free', lv: 'Pirmā nodarbība - bez maksas' },
       text: {
-        ru: 'Приходите на первую тренировку бесплатно — без обязательств, решение остаётся за вами.',
-        en: 'Come to your first class free — no commitment, the decision is yours.',
-        lv: 'Nāciet uz pirmo nodarbību bez maksas — bez saistībām, lēmums paliek jūsu ziņā.',
+        ru: 'Приходите на первую тренировку бесплатно - без обязательств, решение остаётся за вами.',
+        en: 'Come to your first class free - no commitment, the decision is yours.',
+        lv: 'Nāciet uz pirmo nodarbību bez maksas - bez saistībām, lēmums paliek jūsu ziņā.',
       },
     },
     plans: [
@@ -605,7 +605,7 @@ export const content = {
         id: 'competition',
         name: { ru: 'Соревновательная', en: 'Competition', lv: 'Sacensību' },
         price: null,
-        sessions: { ru: '3–5 раз в неделю + сборы', en: '3–5× per week + camps', lv: '3–5× nedēļā + nometnes' },
+        sessions: { ru: '3-5 раз в неделю + сборы', en: '3-5× per week + camps', lv: '3-5× nedēļā + nometnes' },
         features: [
           { ru: 'Интенсивные тренировки', en: 'Intensive training', lv: 'Intensīvi treniņi' },
           { ru: 'Сборы и лагеря', en: 'Camps and training sessions', lv: 'Nometnes un treniņsalidojumi' },
@@ -618,16 +618,16 @@ export const content = {
     priceOnRequest: { ru: 'Цена по телефону', en: 'Price on request', lv: 'Cena pa tālruni' } as Localized,
     callLabel: { ru: 'Позвонить', en: 'Call us', lv: 'Zvanīt' } as Localized,
     priceNote: {
-      ru: 'Точную стоимость подскажем по телефону — позвоните или оставьте заявку.',
-      en: 'We will tell you the exact price by phone — call us or leave a request.',
-      lv: 'Precīzu cenu pateiksim pa tālruni — zvaniet vai atstājiet pieprasījumu.',
+      ru: 'Точную стоимость подскажем по телефону - позвоните или оставьте заявку.',
+      en: 'We will tell you the exact price by phone - call us or leave a request.',
+      lv: 'Precīzu cenu pateiksim pa tālruni - zvaniet vai atstājiet pieprasījumu.',
     } as Localized,
     cta: { ru: 'Записаться', en: 'Sign up', lv: 'Pieteikties' } as Localized,
     terms: [
       {
-        ru: 'Оплата помесячно — наличными или банковским переводом',
-        en: 'Monthly payment — cash or bank transfer',
-        lv: 'Apmaksa katru mēnesi — skaidrā naudā vai bankas pārskaitījumā',
+        ru: 'Оплата помесячно - наличными или банковским переводом',
+        en: 'Monthly payment - cash or bank transfer',
+        lv: 'Apmaksa katru mēnesi - skaidrā naudā vai bankas pārskaitījumā',
       },
       {
         ru: 'Скидка 10% на второго ребёнка из семьи',
@@ -640,9 +640,9 @@ export const content = {
         lv: 'Abonementa apturēšana slimības vai atvaļinājuma laikā',
       },
       {
-        ru: 'Разовое занятие — уточняйте по телефону',
-        en: 'Single class — ask by phone',
-        lv: 'Vienreizēja nodarbība — jautājiet pa tālruni',
+        ru: 'Разовое занятие - уточняйте по телефону',
+        en: 'Single class - ask by phone',
+        lv: 'Vienreizēja nodarbība - jautājiet pa tālruni',
       },
     ] as Localized[],
   },
@@ -653,9 +653,9 @@ export const content = {
       category: 'other',
       question: { ru: 'С какого возраста можно начинать?', en: 'What is the minimum age?', lv: 'No kāda vecuma var sākt?' },
       answer: {
-        ru: 'С 4 лет. Для самых маленьких — игровая программа с ОФП.',
+        ru: 'С 4 лет. Для самых маленьких - игровая программа с ОФП.',
         en: 'From age 4. For the youngest there is a play-based program with general fitness.',
-        lv: 'No 4 gadu vecuma. Mazākajiem — rotaļu programma ar vispārējo fizisko sagatavotību.',
+        lv: 'No 4 gadu vecuma. Mazākajiem - rotaļu programma ar vispārējo fizisko sagatavotību.',
       },
     },
     {
@@ -663,9 +663,9 @@ export const content = {
       category: 'gear',
       question: { ru: 'Нужна ли специальная экипировка?', en: 'Do I need special equipment?', lv: 'Vai ir nepieciešams īpašs ekipējums?' },
       answer: {
-        ru: 'На первых занятиях — удобная спортивная форма. Кимоно понадобится позже, подскажем, где купить.',
-        en: "Comfortable sportswear for the first classes. A gi will be needed later — we'll advise where to get one.",
-        lv: 'Pirmajās nodarbībās — ērts sporta apģērbs. Kimono būs vajadzīgs vēlāk — ieteiksim, kur iegādāties.',
+        ru: 'На первых занятиях - удобная спортивная форма. Кимоно понадобится позже, подскажем, где купить.',
+        en: "Comfortable sportswear for the first classes. A gi will be needed later - we'll advise where to get one.",
+        lv: 'Pirmajās nodarbībās - ērts sporta apģērbs. Kimono būs vajadzīgs vēlāk - ieteiksim, kur iegādāties.',
       },
     },
     {
@@ -673,9 +673,9 @@ export const content = {
       category: 'other',
       question: { ru: 'Что делать, если ребёнок пропустил тренировку?', en: 'What if a class is missed?', lv: 'Ko darīt, ja nodarbība tiek izlaista?' },
       answer: {
-        ru: 'Предупредите тренера заранее — пропуск можно отработать в другой группе.',
-        en: 'Let the coach know in advance — missed classes can be made up in another group.',
-        lv: 'Iepriekš informējiet treneri — izlaisto nodarbību var atstrādāt citā grupā.',
+        ru: 'Предупредите тренера заранее - пропуск можно отработать в другой группе.',
+        en: 'Let the coach know in advance - missed classes can be made up in another group.',
+        lv: 'Iepriekš informējiet treneri - izlaisto nodarbību var atstrādāt citā grupā.',
       },
     },
     {
@@ -693,7 +693,7 @@ export const content = {
       category: 'other',
       question: { ru: 'Обязательно ли участвовать в соревнованиях?', en: 'Are competitions mandatory?', lv: 'Vai dalība sacensībās ir obligāta?' },
       answer: {
-        ru: 'Нет. Соревнования — по желанию, есть отдельная соревновательная группа.',
+        ru: 'Нет. Соревнования - по желанию, есть отдельная соревновательная группа.',
         en: 'No. Competitions are optional; there is a separate competition group.',
         lv: 'Nē. Sacensības pēc vēlēšanās; ir atsevišķa sacensību grupa.',
       },
@@ -733,9 +733,9 @@ export const content = {
       category: 'other',
       question: { ru: 'Как записаться на первую тренировку?', en: 'How to book your first class?', lv: 'Kā pieteikties pirmajai nodarbībai?' },
       answer: {
-        ru: 'Оставьте заявку в форме на сайте или позвоните — подберём удобный зал и время.',
-        en: "Leave a request in the form or call us — we'll find a convenient hall and time.",
-        lv: 'Atstājiet pieprasījumu formā vai zvaniet — piemeklēsim ērtu zāli un laiku.',
+        ru: 'Оставьте заявку в форме на сайте или позвоните - подберём удобный зал и время.',
+        en: "Leave a request in the form or call us - we'll find a convenient hall and time.",
+        lv: 'Atstājiet pieprasījumu formā vai zvaniet - piemeklēsim ērtu zāli un laiku.',
       },
     },
   ] as FaqItem[],
@@ -759,9 +759,9 @@ export const content = {
       },
     ] as HallAddress[],
     cta: {
-      ru: 'Напишите нам или оставьте заявку — мы ответим в течение дня.',
-      en: 'Write to us or leave a request — we will reply within a day.',
-      lv: 'Rakstiet mums vai atstājiet pieprasījumu — atbildēsim dienas laikā.',
+      ru: 'Напишите нам или оставьте заявку - мы ответим в течение дня.',
+      en: 'Write to us or leave a request - we will reply within a day.',
+      lv: 'Rakstiet mums vai atstājiet pieprasījumu - atbildēsim dienas laikā.',
     } as Localized,
   },
 
@@ -774,9 +774,9 @@ export const content = {
     phonePlaceholder: { ru: '+371 ...', en: '+371 ...', lv: '+371 ...' } as Localized,
     audience: { ru: 'Кто будет заниматься?', en: 'Who will train?', lv: 'Kas trenēsies?' } as Localized,
     audienceOptions: [
-      { ru: 'Ребёнок 4–6 лет', en: 'Child 4–6', lv: 'Bērns 4–6 gadi' },
-      { ru: 'Ребёнок 7–12 лет', en: 'Child 7–12', lv: 'Bērns 7–12 gadi' },
-      { ru: 'Подросток 13–16 лет', en: 'Teen 13–16', lv: 'Pusaudzis 13–16 gadi' },
+      { ru: 'Ребёнок 4-6 лет', en: 'Child 4-6', lv: 'Bērns 4-6 gadi' },
+      { ru: 'Ребёнок 7-12 лет', en: 'Child 7-12', lv: 'Bērns 7-12 gadi' },
+      { ru: 'Подросток 13-16 лет', en: 'Teen 13-16', lv: 'Pusaudzis 13-16 gadi' },
       { ru: 'Взрослый', en: 'Adult', lv: 'Pieaugušais' },
     ] as Localized[],
     comment: { ru: 'Комментарий', en: 'Comment', lv: 'Komentārs' } as Localized,

@@ -9,9 +9,9 @@ type FormStatus = 'idle' | 'sending' | 'sent' | 'error'
 
 /**
  * Форма заявки. Отправка:
- * 1) если задан `content.form.endpoint` (сервис приёма форм, напр. EmailOctopus) — POST FormData;
- * 2) иначе, если задан `contacts.email` — фолбэк на mailto (почтовый клиент);
- * 3) иначе — показываем ошибку с телефоном (форма не настроена).
+ * 1) если задан `content.form.endpoint` (сервис приёма форм, напр. EmailOctopus) - POST FormData;
+ * 2) иначе, если задан `contacts.email` - фолбэк на mailto (почтовый клиент);
+ * 3) иначе - показываем ошибку с телефоном (форма не настроена).
  */
 export function Contacts() {
   const { t, lang } = useLang()
@@ -47,7 +47,7 @@ export function Contacts() {
     }
 
     if (email) {
-      const subject = encodeURIComponent(`${t(content.site.clubName)} — заявка от ${payload.name}`)
+      const subject = encodeURIComponent(`${t(content.site.clubName)} - заявка от ${payload.name}`)
       const body = encodeURIComponent(
         `Имя: ${payload.name}\nТелефон: ${payload.phone}\nКто занимается: ${payload.audience}\nКомментарий: ${payload.comment}\nЯзык: ${lang}`,
       )

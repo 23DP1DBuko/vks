@@ -1,9 +1,9 @@
 import { useState } from 'react'
 
 /**
- * Логотип клуба. Берёт файл /logo.png (public/logo.png) — как только
+ * Логотип клуба. Берёт файл /logo.png (public/logo.png) - как только
  * владелец положит файл в проект, он автоматически появится в шапке
- * и подвале. Пока файла нет — показываем запасной знак 拳.
+ * и подвале. Пока файла нет - показываем запасной знак 拳.
  */
 export function ClubLogo({ className = 'h-10 w-10' }: { className?: string }) {
   const [failed, setFailed] = useState(false)

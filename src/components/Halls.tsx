@@ -54,9 +54,9 @@ export function Halls() {
 
         <p className="mt-6 text-sm text-white/45">
           {t({
-            ru: 'Расписание уточняется — заполним реальные дни и время.',
-            en: 'Schedule is being confirmed — real days and times will be added.',
-            lv: 'Grafiks tiek precizēts — pievienosim reālās dienas un laikus.',
+            ru: 'Расписание уточняется - заполним реальные дни и время.',
+            en: 'Schedule is being confirmed - real days and times will be added.',
+            lv: 'Grafiks tiek precizēts - pievienosim reālās dienas un laikus.',
           })}
         </p>
       </Container>
