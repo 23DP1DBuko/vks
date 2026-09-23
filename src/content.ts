@@ -7,12 +7,16 @@ import type {
   Hall,
   HallAddress,
   Localized,
-  Plan,
   Program,
   ProgramTag,
   Review,
+  SeoBlockContent,
   Social,
+  SocialPost,
   Stat,
+  TrialInfo,
+  TrainingGroup,
+  TrustItem,
 } from './types'
 
 export const LANGS = ['ru', 'en', 'lv'] as const
@@ -22,7 +26,8 @@ export const NAV: { id: string; label: Localized }[] = [
   { id: 'programs', label: { ru: 'Программы', en: 'Programs', lv: 'Programmas' } },
   { id: 'halls', label: { ru: 'Залы', en: 'Halls', lv: 'Zāles' } },
   { id: 'coaches', label: { ru: 'Тренеры', en: 'Coaches', lv: 'Treneri' } },
-  { id: 'pricing', label: { ru: 'Цены', en: 'Pricing', lv: 'Cenas' } },
+  { id: 'social', label: { ru: 'Новости', en: 'News', lv: 'Jaunumi' } },
+  { id: 'pricing', label: { ru: 'Группы', en: 'Groups', lv: 'Grupas' } },
   { id: 'faq', label: { ru: 'FAQ', en: 'FAQ', lv: 'BUJ' } },
   { id: 'contacts', label: { ru: 'Контакты', en: 'Contacts', lv: 'Kontakti' } },
 ]
@@ -60,12 +65,12 @@ export const SECTIONS: Record<
     },
   },
   programs: {
-    kicker: { ru: '02 · Группы', en: '02 · Groups', lv: '02 · Grupas' },
+    kicker: { ru: '02 · Программы', en: '02 · Programs', lv: '02 · Programmas' },
     title: { ru: 'Программы и возрастные группы', en: 'Programs & age groups', lv: 'Programmas un vecuma grupas' },
     subtitle: {
-      ru: 'Заниматься можно с 4 лет - от игровых тренировок для малышей до соревновательной группы.',
-      en: 'Train from age 4 - from play-based classes for little ones to a competition group.',
-      lv: 'Trenēties var no 4 gadu vecuma - no rotaļu nodarbībām mazākajiem līdz sacensību grupai.',
+      ru: 'Детское карате в Риге с 4 лет и группы для взрослых - от игровых тренировок для малышей до соревновательной группы.',
+      en: "Kids' karate in Riga from age 4 and adult groups - from play-based classes to the competition group.",
+      lv: 'Bērnu karatē Rīgā no 4 gadu vecuma un pieaugušo grupas - no rotaļu nodarbībām līdz sacensību grupai.',
     },
   },
   halls: {
@@ -81,9 +86,9 @@ export const SECTIONS: Record<
     kicker: { ru: '04 · Команда', en: '04 · Team', lv: '04 · Komanda' },
     title: { ru: 'Тренеры', en: 'Coaches', lv: 'Treneri' },
     subtitle: {
-      ru: 'Занятия ведут мастера с высшими степенями и сертифицированные тренеры.',
-      en: 'Classes are led by masters with the highest ranks and certified coaches.',
-      lv: 'Nodarbības vada meistari ar augstākajām pakāpēm un sertificēti treneri.',
+      ru: 'Занятия ведут мастера с высшими степенями - от детских групп до соревновательной подготовки.',
+      en: 'Classes are led by masters with the highest ranks - from kids’ groups to competition training.',
+      lv: 'Nodarbības vada meistari ar augstākajām pakāpēm - no bērnu grupām līdz sacensību sagatavošanai.',
     },
   },
   achievements: {
@@ -108,19 +113,19 @@ export const SECTIONS: Record<
     kicker: { ru: '07 · Новости', en: '07 · News', lv: '07 · Jaunumi' },
     title: { ru: 'Жизнь клуба', en: 'Club life', lv: 'Kluba dzīve' },
     subtitle: {
-      ru: 'Свежие новости, фото и видео - прямо из наших соцсетей.',
-      en: 'Latest news, photos and videos - straight from our social media.',
-      lv: 'Jaunākās ziņas, fotogrāfijas un video - tieši no mūsu sociālajiem tīkliem.',
+      ru: 'Фото и новости тренировок, турниров, лагерей и мероприятий - жизнь клуба на одной странице.',
+      en: 'Photos and news from training, tournaments, camps and events - club life in one place.',
+      lv: 'Fotogrāfijas un jaunumi no treniņiem, turnīriem, nometnēm un pasākumiem - kluba dzīve vienā vietā.',
     },
     // замечание: заголовки секций social/pricing/faq/contacts переопределены ниже в content
   },
   pricing: {
-    kicker: { ru: '08 · Тарифы', en: '08 · Pricing', lv: '08 · Cenas' },
-    title: { ru: 'Стоимость и условия', en: 'Pricing & terms', lv: 'Cenas un nosacījumi' },
+    kicker: { ru: '08 · Как начать', en: '08 · Getting started', lv: '08 · Kā sākt' },
+    title: { ru: 'Группы для детей и взрослых', en: 'Groups for kids and adults', lv: 'Grupas bērniem un pieaugušajiem' },
     subtitle: {
-      ru: 'Первая тренировка - бесплатно. Начните без обязательств, а стоимость подскажем по телефону.',
-      en: 'Your first class is free - start with no commitment; the price is one phone call away.',
-      lv: 'Pirmā nodarbība - bez maksas. Sāciet bez saistībām, cenu pateiksim pa tālruni.',
+      ru: 'Первая тренировка - бесплатно. Подскажем, какая группа подойдёт вам или вашему ребёнку, и назовём стоимость по телефону.',
+      en: 'Your first class is free. We will suggest the right group for you or your child and tell you the price by phone.',
+      lv: 'Pirmā nodarbība - bez maksas. Ieteiksim piemērotāko grupu jums vai jūsu bērnam un pateiksim cenu pa tālruni.',
     },
   },
   faq: {
@@ -146,6 +151,8 @@ export const SECTIONS: Record<
 export const content = {
   sections: SECTIONS,
   site: {
+    /** Канонический домен сайта - canonical, OG-теги, sitemap. Заменить при переезде. */
+    url: 'https://vasilyev-karate.lv',
     clubName: {
       ru: 'Vasilyev Karate Club',
       en: 'Vasilyev Karate Club',
@@ -154,19 +161,28 @@ export const content = {
     tagline: { ru: 'Карате в Риге с 1984 года', en: 'Karate in Riga since 1984', lv: 'Karatē Rīgā kopš 1984. gada' } as Localized,
     meta: {
       title: {
-        ru: 'Vasilyev Karate Club - Карате в Риге с 1984 года',
-        en: 'Vasilyev Karate Club - Karate in Riga since 1984',
-        lv: 'Vasiljeva karatē klubs - Karatē Rīgā kopš 1984. gada',
+        ru: 'Карате в Риге (Кенгарагс) - Vasilyev Karate Club с 1984 года',
+        en: 'Karate in Riga (Ķengarags) - Vasilyev Karate Club since 1984',
+        lv: 'Karatē Rīgā (Ķengaragā) - Vasiljeva karatē klubs kopš 1984. gada',
       },
       description: {
-        ru: 'Карате для детей с 4 лет и взрослых в Риге. Два зала, первая тренировка бесплатно, тренеры 8 дан и 5 дан.',
-        en: 'Karate for kids from age 4 and adults in Riga. Two halls, a free first class, coaches with 8th and 5th dan.',
-        lv: 'Karatē bērniem no 4 gadu vecuma un pieaugušajiem Rīgā. Divas zāles, pirmā nodarbība bez maksas, treneri ar 8. un 5. danu.',
+        ru: 'Детское и взрослое карате в Риге, Кенгарагс: два зала, группы с 4 лет, соревнования и самооборона. Первая тренировка бесплатно, тренеры 8 дан и 5 дан.',
+        en: 'Karate for children from age 4 and adults in Riga, Ķengarags: two halls, competitions and self-defence. Free first class, coaches with 8th and 5th dan.',
+        lv: 'Karatē bērniem no 4 gadu vecuma un pieaugušajiem Rīgā, Ķengaragā: divas zāles, sacensības un pašaizsardzība. Pirmā nodarbība bez maksas, treneri ar 8. un 5. danu.',
       },
     },
   },
 
   hero: {
+    /** Главное фото первого экрана. Пока файл есть - 3D-сцена не рендерится (быстрее и нагляднее). */
+    image: {
+      src: '/hero.jpg',
+      alt: {
+        ru: 'Тренировка в зале Vasilyev Karate Club - карате в Риге с 1984 года',
+        en: 'Training at Vasilyev Karate Club - karate in Riga since 1984',
+        lv: 'Treniņš Vasiljeva karatē klubā - karatē Rīgā kopš 1984. gada',
+      },
+    },
     title: {
       ru: 'Карате в Риге для детей и взрослых - с 1984 года',
       en: 'Karate in Riga for kids and adults - since 1984',
@@ -181,6 +197,12 @@ export const content = {
       ru: 'Мастера клуба: Леонид Васильев - 8 дан, Жанна Васильева - 5 дан. Группы с 4 лет, два зала в Риге, бесплатное пробное занятие.',
       en: 'Club masters: Leonid Vasilyev - 8th dan, Zhanna Vasilyeva - 5th dan. Groups from age 4, two halls in Riga, free trial class.',
       lv: 'Kluba meistari: Leonīds Vasiļjevs - 8. dans, Žanna Vasiļjeva - 5. dans. Grupas no 4 gadu vecuma, divas zāles Rīgā, bezmaksas izmēģinājuma nodarbība.',
+    } as Localized,
+    /** Короткая версия подзаголовка для телефонов - первый экран должен укладываться в высоту. */
+    subtitleMobile: {
+      ru: 'Мастера 8 и 5 дан, группы с 4 лет, два зала в Риге. Первая тренировка - бесплатно.',
+      en: 'Masters 8th and 5th dan, groups from age 4, two halls in Riga. First class free.',
+      lv: 'Meistari ar 8. un 5. danu, grupas no 4 gadiem, divas zāles Rīgā. Pirmā nodarbība bez maksas.',
     } as Localized,
     paragraph: {
       ru: 'Помогаем детям расти сильными и уверенными, а взрослым - найти форму и дисциплину. Приходите на пробную тренировку и убедитесь сами.',
@@ -203,10 +225,10 @@ export const content = {
       lv: 'Pirmā nodarbība',
     } as Localized,
     stats: [
-      { value: 1984, suffix: '', label: { ru: 'год основания', en: 'founded', lv: 'dibināts' } },
-      { value: 8, suffix: ' дан', label: { ru: 'высшая степень тренера', en: 'highest coach rank', lv: 'augstākā trenera pakāpe' } },
-      { value: 2, suffix: '', label: { ru: 'зала в Риге', en: 'halls in Riga', lv: 'zāles Rīgā' } },
-      { value: 4, suffix: '+', label: { ru: 'лет - приём с 4 лет', en: 'years - start at 4', lv: 'gadi - sākums no 4' } },
+      { value: 1984, label: { ru: 'год основания', en: 'founded', lv: 'dibināts' } },
+      { value: 8, suffix: { ru: ' дан', en: 'th dan', lv: '. dans' }, label: { ru: 'высшая степень тренера', en: 'highest coach rank', lv: 'augstākā trenera pakāpe' } },
+      { value: 2, label: { ru: 'зала в Риге', en: 'halls in Riga', lv: 'zāles Rīgā' } },
+      { value: 4, suffix: { ru: '+', en: '+', lv: '+' }, label: { ru: 'лет - приём с 4 лет', en: 'years - start at 4', lv: 'gadi - sākums no 4' } },
     ] as Stat[],
     values: [
       { ru: 'Здоровье', en: 'Health', lv: 'Veselība' },
@@ -360,6 +382,12 @@ export const content = {
         { day: 'sat', time: '10:00-13:00' },
       ],
       mapUrl: 'https://www.google.com/maps/search/?api=1&query=Ik%C5%A1%C4%B7iles+iela+6,+R%C4%ABga',
+      photo: '/images/halls/ikskiles.jpg',
+      convenience: {
+        ru: 'Удобно для жителей Кенгарагса и центра Риги: остановки транспорта и парковка у школы, 5 минут пешком от остановки «Ikšķiles iela».',
+        en: 'Convenient for Ķengarags and central Riga residents: transport stops and parking by the school, 5 minutes on foot from the "Ikšķiles iela" stop.',
+        lv: 'Ērti Ķengaraga un Rīgas centra iedzīvotājiem: transports pieturas un stāvvieta pie skolas, 5 minūtes gājienā no pieturas "Ikšķiles iela".',
+      },
     },
     {
       id: 'hall-2',
@@ -376,54 +404,68 @@ export const content = {
         { day: 'sat', time: '13:00-16:00' },
       ],
       mapUrl: 'https://www.google.com/maps/search/?api=1&query=Latgales+iela+322,+R%C4%ABga',
+      photo: '/images/halls/latgales.jpg',
+      convenience: {
+        ru: 'Рядом Кенгарагс и центр: трамвай и автобус по Latgales iela, парковка во дворе - легко добраться из любого района Риги.',
+        en: 'Close to Ķengarags and the centre: tram and bus along Latgales iela, parking on site - easy to reach from any district of Riga.',
+        lv: 'Netālu no Ķengaraga un centra: tramvajs un autobuss pa Latgales ielu, stāvvieta pagalmā - viegli sasniegt no jebkura Rīgas rajona.',
+      },
     },
   ] as Hall[],
+
+  hallsNote: {
+    ru: 'Оба зала находятся в Кенгарагсе, 10-15 минут от центра Риги: удобно добираться на трамвае, автобусе и на машине, рядом остановки и парковка. Родителям из Кенгарагса, Дарзини и центра не нужно возить детей через весь город.',
+    en: 'Both halls are in Ķengarags, 10-15 minutes from central Riga: easy by tram, bus or car, with stops and parking nearby. Parents from Ķengarags, Dārziņi and the centre do not have to cross the whole city.',
+    lv: 'Abas zāles atrodas Ķengaragā, 10-15 minūtēs no Rīgas centra: ērti ar tramvaju, autobusu vai auto, blakus pieturas un stāvvieta. Vecākiem no Ķengaraga, Dārziņiem un centra nav jābrauc pāri visai pilsētai.',
+  } as Localized,
 
   coaches: [
     {
       id: 'leonid',
+      photo: '/leonid.jpg',
       name: 'Leonids Vasiļjevs',
       dan: 8,
       description: {
-        ru: 'Основатель клуба, в карате более 40 лет. Ведёт соревновательную группу, готовит спортсменов к турнирам Латвии и международным стартам.',
-        en: 'Founder of the club, over 40 years in karate. Leads the competition group, prepares athletes for Latvian and international tournaments.',
-        lv: 'Kluba dibinātājs, karatē vairāk nekā 40 gadus. Vada sacensību grupu, gatavo sportistus Latvijas un starptautiskiem turnīriem.',
+        ru: 'Основатель клуба. Тренировки по кумите и ката, готовит спортсменов к турнирам Латвии и международным стартам.',
+        en: 'Founder of the club. Coaches kumite and kata, prepares athletes for Latvian and international tournaments.',
+        lv: 'Kluba dibinātājs. Vada kumite un kata treniņus, gatavo sportistus Latvijas un starptautiskiem turnīriem.',
       },
       specialty: {
-        ru: 'Ката, кумите, подготовка спортсменов высокого уровня',
-        en: 'Kata, kumite, high-level athlete development',
-        lv: 'Kata, kumite, augsta līmeņa sportistu sagatavošana',
+        ru: 'Кумите и ката',
+        en: 'Kumite and kata',
+        lv: 'Kumite un kata',
       },
     },
     {
       id: 'zhanna',
+      photo: '/zanna.jpg',
       name: 'Žanna Vasiļjeva',
       dan: 5,
       description: {
-        ru: 'Сертифицированный тренер Латвийской федерации карате. Специализация: детские группы с 4 лет, начальная подготовка, работа с новичками.',
-        en: 'Certified coach of the Latvian Karate Federation. Specialisation: kids’ groups from age 4, beginner training.',
-        lv: 'Sertificēta Latvijas Karatē federācijas trenere. Specializācija: bērnu grupas no 4 gadu vecuma, iesācēju sagatavošana.',
+        ru: 'Тренер: подготовка к экзаменам и турнирам, все группы.',
+        en: 'Coach: preparation for exams and tournaments, all groups.',
+        lv: 'Trenere: sagatavošanās eksāmeniem un turnīriem, visas grupas.',
       },
       specialty: {
-        ru: 'Детские группы, начальная подготовка',
-        en: 'Kids’ groups, beginner training',
-        lv: 'Bērnu grupas, iesācēju sagatavošana',
+        ru: 'Экзамены и турниры · все группы',
+        en: 'Exams and tournaments · all groups',
+        lv: 'Eksāmeni un turnīri · visas grupas',
       },
-      certificate: { category: 'C', number: '2622', validUntil: '2025-11-11' },
     },
     {
       id: 'diana',
+      photo: '/diana.jpg',
       name: 'Diana Tokare',
       dan: 2,
       description: {
-        ru: 'Тренер клуба, 2 дан. Специализация: детские группы, общая физическая подготовка, подготовка к экзаменам на пояса.',
-        en: 'Club coach, 2nd dan. Specialisation: kids’ groups, general fitness, belt exam preparation.',
-        lv: 'Kluba trenere, 2. dans. Specializācija: bērnu grupas, vispārējā fiziskā sagatavotība, sagatavošanās jostu eksāmeniem.',
+        ru: 'Тренер: детские группы, ОФП.',
+        en: 'Coach: kids’ groups, general fitness.',
+        lv: 'Trenere: bērnu grupas, vispārējā fiziskā sagatavotība.',
       },
       specialty: {
-        ru: 'Детские группы, ОФП, пояса',
-        en: 'Kids’ groups, general fitness, belts',
-        lv: 'Bērnu grupas, vispārējā sagatavotība, jostas',
+        ru: 'Детские группы · ОФП',
+        en: 'Kids’ groups · general fitness',
+        lv: 'Bērnu grupas · vispārējā sagatavotība',
       },
     },
   ] as Coach[],
@@ -551,21 +593,102 @@ export const content = {
     },
   ] as Review[],
 
+  trustTitle: {
+    ru: 'Почему родители выбирают нас',
+    en: 'Why parents choose us',
+    lv: 'Kāpēc vecāki izvēlas mūs',
+  } as Localized,
+
+  trust: [
+    {
+      id: 'since-1984',
+      text: {
+        ru: 'Школа работает с 1984 года - более 40 лет карате в Риге',
+        en: 'The school has run since 1984 - over 40 years of karate in Riga',
+        lv: 'Skola darbojas kopš 1984. gada - vairāk nekā 40 gadus karatē Rīgā',
+      },
+    },
+    {
+      id: 'founder-8dan',
+      text: {
+        ru: 'Основатель клуба - 8 дан, одна из высших степеней в Латвии',
+        en: 'The club founder holds 8th dan - one of the highest ranks in Latvia',
+        lv: 'Kluba dibinātājam ir 8. dans - viena no augstākajām pakāpēm Latvijā',
+      },
+    },
+    {
+      id: 'halls-kengarags',
+      text: {
+        ru: 'Два зала в Кенгарагсе - рядом дом, школа и транспорт',
+        en: 'Two halls in Ķengarags - close to home, school and transport',
+        lv: 'Divas zāles Ķengaragā - tuvu mājām, skolai un transportam',
+      },
+    },
+    {
+      id: 'safety',
+      text: {
+        ru: 'Ученики застрахованы, спарринги - под контролем и в защите',
+        en: 'Students are insured; sparring is controlled and with protective gear',
+        lv: 'Audzēkņi ir apdrošināti; sparingi notiek kontrolēti un ar aizsargiem',
+      },
+    },
+    {
+      id: 'free-trial',
+      text: {
+        ru: 'Первая тренировка бесплатно - решение без обязательств',
+        en: 'Free first class - decide with no commitment',
+        lv: 'Pirmā nodarbība bez maksas - lēmums bez saistībām',
+      },
+    },
+    {
+      id: 'competitions',
+      text: {
+        ru: 'Ученики выступают на турнирах в Латвии и за рубежом - по желанию',
+        en: 'Students compete in Latvia and abroad - always optional',
+        lv: 'Audzēkņi startē turnīros Latvijā un ārzemēs - pēc vēlēšanās',
+      },
+    },
+  ] as TrustItem[],
+
   social: {
     enabled: true,
     provider: 'facebook' as const,
     pageUrl: 'https://www.facebook.com/eurokaratedo',
     text: {
-      ru: 'Мы регулярно публикуем фото и видео тренировок, турниров и мероприятий. Листайте ленту или подписывайтесь - будьте в курсе жизни клуба.',
-      en: 'We regularly share photos and videos of training, tournaments and events. Scroll the feed or follow us to keep up with club life.',
-      lv: 'Regulāri publicējam treniņu, turnīru un pasākumu fotogrāfijas un video. Šķirstiet lenti vai sekojiet mums, lai būtu lietas kursā.',
+      ru: 'Все новости и фото клуба - в Facebook: свежие посты подтягиваются на сайт автоматически.',
+      en: 'All club news and photos live on Facebook: recent posts appear on the site automatically.',
+      lv: 'Visi kluba jaunumi un foto ir Facebook: jaunākie ieraksti mājaslapā parādās automātiski.',
     } as Localized,
     followLabels: {
       facebook: { ru: 'Подписаться в Facebook', en: 'Follow on Facebook', lv: 'Sekot Facebook' },
       instagram: { ru: 'Подписаться в Instagram', en: 'Follow on Instagram', lv: 'Sekot Instagram' },
       tiktok: { ru: 'Подписаться в TikTok', en: 'Follow on TikTok', lv: 'Sekot TikTok' },
     } as Record<'facebook' | 'instagram' | 'tiktok', Localized>,
-    loadLabel: { ru: 'Загрузить ленту', en: 'Load the feed', lv: 'Ielādēt lenti' } as Localized,
+    viewPostLabel: { ru: 'Смотреть в Facebook', en: 'View on Facebook', lv: 'Skatīt Facebook' } as Localized,
+    prevLabel: { ru: 'Предыдущая карточка', en: 'Previous card', lv: 'Iepriekšējais ieraksts' } as Localized,
+    nextLabel: { ru: 'Следующая карточка', en: 'Next card', lv: 'Nākamais ieraksts' } as Localized,
+    posts: [
+      /* Демо-карточки: автоматически заменяются реальными постами,
+       * когда настроена синхронизация с Facebook (npm run sync:fb). */
+      {
+        id: 'demo-enrollment',
+        date: '2026-09-14',
+        text: 'Набор в группы открыт: дети с 4 лет и взрослые. Первая тренировка - бесплатно.',
+        url: 'https://www.facebook.com/eurokaratedo',
+      },
+      {
+        id: 'demo-halls',
+        date: '2026-09-07',
+        text: 'Занимаемся в двух залах в Кенгарагсе: Ikšķiles iela 6 и Latgales iela 322.',
+        url: 'https://www.facebook.com/eurokaratedo',
+      },
+      {
+        id: 'demo-trial',
+        date: '2026-09-01',
+        text: 'Приходите на пробную тренировку: удобная спортивная форма и бутылка воды - всё, что нужно для первого раза.',
+        url: 'https://www.facebook.com/eurokaratedo',
+      },
+    ] as SocialPost[],
   },
 
   pricing: {
@@ -577,52 +700,72 @@ export const content = {
         lv: 'Nāciet uz pirmo nodarbību bez maksas - bez saistībām, lēmums paliek jūsu ziņā.',
       },
     },
-    plans: [
+    // Группы набираются по возрасту и аудитории - так родителю проще узнать свою.
+    groups: [
       {
-        id: 'start',
-        name: { ru: 'Старт', en: 'Start', lv: 'Starta' },
+        id: 'kids-4-6',
+        name: { ru: 'Дети 4-6 лет', en: 'Kids 4-6', lv: 'Bērni 4-6 gadi' },
+        audience: {
+          ru: 'Самые маленькие: первые шаги в карате в игровой форме, без давления и перегрузок.',
+          en: 'The youngest: first steps in karate in a playful way - no pressure, no overload.',
+          lv: 'Paši mazākie: pirmie soļi karatē rotaļīgā veidā - bez spiediena un pārslodzes.',
+        },
+        schedule: { ru: '2-3 тренировки в неделю', en: '2-3 classes per week', lv: '2-3 treniņi nedēļā' },
         price: null,
-        sessions: { ru: '2 раза в неделю', en: '2× per week', lv: '2× nedēļā' },
         features: [
-          { ru: '8 тренировок в месяц', en: '8 sessions per month', lv: '8 treniņi mēnesī' },
-          { ru: 'Удобно для знакомства с карате', en: 'Great for trying karate', lv: 'Ērti karatē iepazīšanai' },
+          { ru: 'Старт с нуля - опыт не нужен', en: 'Start from zero - no experience needed', lv: 'Sākums no nulles - pieredze nav vajadzīga' },
+          { ru: 'Общая физподготовка и координация', en: 'General fitness and coordination', lv: 'Vispārējā sagatavotība un koordinācija' },
+          { ru: 'Привыкаем к дисциплине в зале', en: 'Getting used to discipline in the hall', lv: 'Pierodam pie disciplīnas zālē' },
         ],
         highlighted: false,
       },
       {
-        id: 'standard',
-        name: { ru: 'Стандарт', en: 'Standard', lv: 'Standarta' },
+        id: 'kids-7-12',
+        name: { ru: 'Дети 7-12 лет', en: 'Children 7-12', lv: 'Bērni 7-12 gadi' },
+        audience: {
+          ru: 'Основная детская группа - и для тех, кто только начинает, и для тех, кто уже тренируется.',
+          en: 'The main kids group - for those just starting out and for those already training.',
+          lv: 'Galvenā bērnu grupa - gan tiem, kas tikko sāk, gan tiem, kas jau trenējas.',
+        },
+        schedule: { ru: '3 тренировки в неделю', en: '3 classes per week', lv: '3 treniņi nedēļā' },
         price: null,
-        sessions: { ru: '3 раза в неделю', en: '3× per week', lv: '3× nedēļā' },
         features: [
-          { ru: '12 тренировок в месяц', en: '12 sessions per month', lv: '12 treniņi mēnesī' },
-          { ru: 'Стабильный прогресс', en: 'Steady progress', lv: 'Stabils progress' },
-          { ru: 'Любые группы по возрасту', en: 'Any age group', lv: 'Jebkura vecuma grupa' },
+          { ru: 'Техника карате с нуля', en: 'Karate technique from zero', lv: 'Karatē tehnika no nulles' },
+          { ru: 'Подготовка к экзаменам на пояса', en: 'Preparation for belt exams', lv: 'Sagatavošanās jostu eksāmeniem' },
+          { ru: 'Первые соревнования - по желанию', en: 'First competitions - only if they want to', lv: 'Pirmās sacensības - tikai pēc vēlēšanās' },
         ],
         highlighted: true,
       },
       {
-        id: 'competition',
-        name: { ru: 'Соревновательная', en: 'Competition', lv: 'Sacensību' },
+        id: 'teens-adults',
+        name: { ru: 'Подростки и взрослые', en: 'Teens & adults', lv: 'Pusaudži un pieaugušie' },
+        audience: {
+          ru: 'Для подростков и взрослых с любым уровнем, включая соревновательную группу клуба.',
+          en: 'For teens and adults of any level, including the competition squad.',
+          lv: 'Pusaudžiem un pieaugušajiem ar jebkuru līmeni, ieskaitot kluba sacensību grupu.',
+        },
+        schedule: { ru: '3-5 тренировок в неделю', en: '3-5 classes per week', lv: '3-5 treniņi nedēļā' },
         price: null,
-        sessions: { ru: '3-5 раз в неделю + сборы', en: '3-5× per week + camps', lv: '3-5× nedēļā + nometnes' },
         features: [
-          { ru: 'Интенсивные тренировки', en: 'Intensive training', lv: 'Intensīvi treniņi' },
-          { ru: 'Сборы и лагеря', en: 'Camps and training sessions', lv: 'Nometnes un treniņsalidojumi' },
-          { ru: 'Подготовка к турнирам', en: 'Tournament preparation', lv: 'Sagatavošanās turnīriem' },
+          { ru: 'Начать можно в любом возрасте', en: 'You can start at any age', lv: 'Sākt var jebkurā vecumā' },
+          { ru: 'Форма, выносливость и самооборона', en: 'Fitness, stamina and self-defence', lv: 'Forma, izturība un pašaizsardzība' },
+          { ru: 'Подготовка к турнирам в Латвии и за рубежом', en: 'Preparation for tournaments in Latvia and abroad', lv: 'Sagatavošanās turnīriem Latvijā un ārzemēs' },
         ],
         highlighted: false,
       },
-    ] as Plan[],
-    popularLabel: { ru: 'Популярный', en: 'Most popular', lv: 'Populārākais' } as Localized,
+    ] as TrainingGroup[],
+    // Метка на карточке группы, которая лучше всего подходит новичкам.
+    beginnerLabel: { ru: 'Для начинающих', en: 'Beginner friendly', lv: 'Iesācējiem' } as Localized,
     priceOnRequest: { ru: 'Цена по телефону', en: 'Price on request', lv: 'Cena pa tālruni' } as Localized,
     callLabel: { ru: 'Позвонить', en: 'Call us', lv: 'Zvanīt' } as Localized,
+    requestLabel: { ru: 'Оставить заявку', en: 'Leave a request', lv: 'Atstāt pieprasījumu' } as Localized,
     priceNote: {
-      ru: 'Точную стоимость подскажем по телефону - позвоните или оставьте заявку.',
-      en: 'We will tell you the exact price by phone - call us or leave a request.',
-      lv: 'Precīzu cenu pateiksim pa tālruni - zvaniet vai atstājiet pieprasījumu.',
+      ru: 'Не знаете, какая группа подойдёт? Позвоните - подскажем и запишем на бесплатную первую тренировку.',
+      en: 'Not sure which group fits? Call us - we will advise and book your free first class.',
+      lv: 'Nezināt, kura grupa piemērota? Zvaniet - ieteiksim un pierakstīsim uz bezmaksas pirmo nodarbību.',
     } as Localized,
     cta: { ru: 'Записаться', en: 'Sign up', lv: 'Pieteikties' } as Localized,
+    // Условия без непроверенных обещаний: спорные пункты заменены на «уточним при разговоре».
     terms: [
       {
         ru: 'Оплата помесячно - наличными или банковским переводом',
@@ -630,14 +773,14 @@ export const content = {
         lv: 'Apmaksa katru mēnesi - skaidrā naudā vai bankas pārskaitījumā',
       },
       {
-        ru: 'Скидка 10% на второго ребёнка из семьи',
-        en: '10% discount for a second child from the same family',
-        lv: '10% atlaide otrajam bērnam no ģimenes',
+        ru: 'Группу подбираем по возрасту и уровню подготовки',
+        en: 'We place you in a group by age and level',
+        lv: 'Grupu izvēlamies pēc vecuma un sagatavotības līmeņa',
       },
       {
-        ru: 'Заморозка абонемента на время болезни или отпуска',
-        en: 'Membership freeze during illness or holidays',
-        lv: 'Abonementa apturēšana slimības vai atvaļinājuma laikā',
+        ru: 'Точные условия и расписание уточняем при разговоре',
+        en: 'Exact terms and schedule are clarified when we talk',
+        lv: 'Precīzus nosacījumus un grafiku precizējam sarunā',
       },
       {
         ru: 'Разовое занятие - уточняйте по телефону',
@@ -723,9 +866,9 @@ export const content = {
       category: 'payment',
       question: { ru: 'Как проходит оплата?', en: 'How does payment work?', lv: 'Kā notiek apmaksa?' },
       answer: {
-        ru: 'Помесячно, наличными или банковским переводом; есть заморозка на время болезни или отпуска.',
-        en: 'Monthly, by cash or bank transfer; freezing is available for illness or holidays.',
-        lv: 'Katru mēnesi, skaidrā naudā vai bankas pārskaitījumā; iespējama abonementa apturēšana slimības vai atvaļinājuma laikā.',
+        ru: 'Помесячно, наличными или банковским переводом. Точные условия уточняем при разговоре.',
+        en: 'Monthly, by cash or bank transfer. We clarify the exact terms when we talk.',
+        lv: 'Katru mēnesi, skaidrā naudā vai bankas pārskaitījumā. Precīzus nosacījumus precizējam sarunā.',
       },
     },
     {
@@ -765,10 +908,71 @@ export const content = {
     } as Localized,
   },
 
+  seoBlock: {
+    title: {
+      ru: 'Карате в Риге и Кенгарагсе - для детей и взрослых',
+      en: 'Karate in Riga and Ķengarags - for children and adults',
+      lv: 'Karatē Rīgā un Ķengaragā - bērniem un pieaugušajiem',
+    },
+    paragraphs: [
+      {
+        ru: 'Vasilyev Karate Club работает в Риге с 1984 года. Мы обучаем детей с 4 лет, подростков и взрослых - независимо от уровня подготовки. Занятия проходят в двух залах в Кенгарагсе: в школе на Ikšķiles iela 6 и на Latgales iela 322, куда удобно добираться из центра и других районов Риги.',
+        en: 'Vasilyev Karate Club has been teaching in Riga since 1984. We train children from the age of 4, teenagers and adults - regardless of previous experience. Classes take place in two halls in Ķengarags: at Ikšķiles iela 6 and Latgales iela 322, both easy to reach from the centre and other districts of Riga.',
+        lv: 'Vasiljeva karatē klubs Rīgā strādā kopš 1984. gada. Mēs apmācām bērnus no 4 gadu vecuma, pusaudžus un pieaugušos - neatkarīgi no iepriekšējas pieredzes. Nodarbības notiek divās zālēs Ķengaragā: Ikšķiles ielā 6 un Latgales ielā 322, kur ērti nokļūt no centra un citiem Rīgas rajoniem.',
+      },
+      {
+        ru: 'Если вы ищете карате в Риге для ребёнка, обратите внимание: в наших группах дети получают не только физическую нагрузку, но и привычку к дисциплине, умение концентрироваться и уверенность в себе. Тренировки построены по возрасту: для малышей - игровая форма, для школьников - базовая техника, ката и первые соревнования.',
+        en: 'If you are looking for karate in Riga for a child, note that our groups build not only fitness but also discipline, concentration and self-confidence. Training is adapted to age: play-based classes for the youngest, basic technique, kata and first competitions for schoolchildren.',
+        lv: 'Ja meklējat karatē Rīgā bērnam, ņemiet vērā: mūsu grupās bērni iegūst ne tikai fizisko sagatavotību, bet arī disciplīnu, spēju koncentrēties un pašapziņu. Treniņi tiek pielāgoti vecumam: mazākajiem - rotaļu forma, skolēniem - pamattehnika, kata un pirmās sacensības.',
+      },
+      {
+        ru: 'Для взрослых карате - это способ поддерживать форму, снять стресс и освоить практичные навыки самообороны. Начать можно с нуля в любом возрасте: тренеры подбирают нагрузку индивидуально, а участие в турнирах и сборах всегда по желанию. Первая тренировка бесплатная - приходите и попробуйте.',
+        en: 'For adults, karate is a way to stay in shape, release stress and learn practical self-defence. You can start from zero at any age: coaches adjust the load individually, and competitions and camps are always optional. The first class is free - come and try it.',
+        lv: 'Pieaugušajiem karatē ir veids, kā uzturēt formu, mazināt stresu un apgūt praktiskas pašaizsardzības iemaņas. Sākt var no nulles jebkurā vecumā: treneri pielāgo slodzi individuāli, un dalība turnīros un nometnēs vienmēr ir pēc vēlēšanās. Pirmā nodarbība ir bez maksas - nāciet un pamēģiniet.',
+      },
+    ],
+  } as SeoBlockContent,
+
   form: {
     title: { ru: 'Оставьте заявку', en: 'Leave a request', lv: 'Atstājiet pieprasījumu' } as Localized,
     /** URL сервиса приёма заявок (например, EmailOctopus form endpoint). null = фолбэк на mailto. */
     endpoint: null as string | null,
+    /** Что нужно знать перед пробной тренировкой - показываем рядом с формой. */
+    trialInfo: {
+      title: { ru: 'Пробная тренировка', en: 'Trial class', lv: 'Izmēģinājuma nodarbība' },
+      forWhom: {
+        ru: 'Для детей с 4 лет и взрослых любого уровня - приходить можно с нуля.',
+        en: 'For children from age 4 and adults of any level - beginners are welcome.',
+        lv: 'Bērniem no 4 gadu vecuma un pieaugušajiem jebkurā līmenī - var sākt no nulles.',
+      },
+      replyTime: {
+        ru: 'Отвечаем в течение дня, обычно за пару часов - позвоним или напишем в WhatsApp.',
+        en: 'We reply within a day, usually within a couple of hours - by phone or WhatsApp.',
+        lv: 'Atbildam dienas laikā, parasti pāris stundu laikā - pa tālruni vai WhatsApp.',
+      },
+      whatToBringTitle: {
+        ru: 'Что взять на первую тренировку',
+        en: 'What to bring to your first class',
+        lv: 'Ko ņemt līdzi uz pirmo nodarbību',
+      },
+      whatToBring: [
+        {
+          ru: 'Удобная спортивная форма - футболка и штаны',
+          en: 'Comfortable sportswear - a t-shirt and trousers',
+          lv: 'Ērts sporta apģērbs - t-krekls un bikses',
+        },
+        {
+          ru: 'Сменная обувь и бутылка воды',
+          en: 'Indoor shoes and a bottle of water',
+          lv: 'Maiņas apavi un ūdens pudele',
+        },
+        {
+          ru: 'Кимоно понадобится позже - подскажем, где купить',
+          en: 'A gi is needed later - we will advise where to buy one',
+          lv: 'Kimono būs vajadzīgs vēlāk - ieteiksim, kur iegādāties',
+        },
+      ],
+    } as TrialInfo,
     name: { ru: 'Имя', en: 'Name', lv: 'Vārds' } as Localized,
     phone: { ru: 'Телефон', en: 'Phone', lv: 'Tālrunis' } as Localized,
     phonePlaceholder: { ru: '+371 ...', en: '+371 ...', lv: '+371 ...' } as Localized,

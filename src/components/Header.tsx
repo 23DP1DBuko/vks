@@ -13,14 +13,15 @@ export function Header() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-ink/85 backdrop-blur">
-      <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
-        <a href="#hero" className="flex items-center gap-3" onClick={close}>
-          <ClubLogo className="h-10 w-10" />
-          <span className="leading-tight">
-            <span className="block font-display text-sm font-semibold tracking-[0.18em] uppercase">
+      <div className="mx-auto flex h-14 w-full max-w-6xl items-center justify-between gap-2 px-3 sm:h-16 sm:gap-4 sm:px-6">
+        <a href="#hero" className="flex min-w-0 items-center gap-2 sm:gap-3" onClick={close}>
+          <ClubLogo className="h-8 w-8 sm:h-10 sm:w-10" />
+          <span className="min-w-0 leading-tight">
+            <span className="block truncate font-display text-[13px] font-semibold tracking-[0.14em] uppercase sm:text-sm">
               Vasilyev
             </span>
-            <span className="block text-[11px] tracking-[0.28em] text-white/60 uppercase">
+            {/* Полный бренд-блок показываем с планшета - на телефоне экономит место в шапке. */}
+            <span className="hidden text-[11px] tracking-[0.28em] text-white/60 uppercase sm:block">
               Karate · Anno 1984
             </span>
           </span>
@@ -38,15 +39,19 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-3">
-          <div className="flex items-center gap-1 rounded-full border border-white/15 p-1" role="group" aria-label="Язык">
+        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+          <div
+            className="flex items-center gap-0.5 rounded-full border border-white/15 p-0.5 sm:gap-1 sm:p-1"
+            role="group"
+            aria-label="Язык"
+          >
             {LANGS.map((l) => (
               <button
                 key={l}
                 type="button"
                 onClick={() => setLang(l as Lang)}
                 aria-pressed={lang === l}
-                className={`rounded-full px-2.5 py-1 text-xs font-semibold uppercase transition-colors ${
+                className={`rounded-full px-2.5 py-1.5 text-[11px] font-semibold uppercase transition-colors sm:px-2.5 sm:text-xs ${
                   lang === l ? 'bg-brand text-white' : 'text-white/60 hover:text-white'
                 }`}
               >
@@ -64,11 +69,11 @@ export function Header() {
 
           <button
             type="button"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white lg:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white sm:h-10 sm:w-10 lg:hidden"
             onClick={() => setOpen((v) => !v)}
             aria-label="Меню"
           >
-            {open ? <X size={20} /> : <Menu size={20} />}
+            {open ? <X size={18} /> : <Menu size={18} />}
           </button>
         </div>
       </div>

@@ -1,8 +1,9 @@
 import { useState, type FormEvent } from 'react'
-import { AlertCircle, CheckCircle2, Mail, MapPin, Phone, Send } from 'lucide-react'
+import { AlertCircle, Check, CheckCircle2, Mail, MapPin, Phone, Send } from 'lucide-react'
 import { FacebookIcon, InstagramIcon, TikTokIcon } from './icons'
 import { content } from '../content'
 import { useLang } from '../i18n'
+import { utmSummary } from '../lib/utm'
 import { Container, Section, SectionHeader } from './Section'
 
 type FormStatus = 'idle' | 'sending' | 'sent' | 'error'
@@ -30,6 +31,8 @@ export function Contacts() {
       audience: String(data.get('audience') ?? ''),
       comment: String(data.get('comment') ?? ''),
       lang,
+      /* Источник заявки: utm_source/gclid/fbclid и т.д. (см. lib/utm.ts) */
+      utm: utmSummary(),
     }
 
     if (endpoint) {
@@ -49,7 +52,7 @@ export function Contacts() {
     if (email) {
       const subject = encodeURIComponent(`${t(content.site.clubName)} - заявка от ${payload.name}`)
       const body = encodeURIComponent(
-        `Имя: ${payload.name}\nТелефон: ${payload.phone}\nКто занимается: ${payload.audience}\nКомментарий: ${payload.comment}\nЯзык: ${lang}`,
+        `Имя: ${payload.name}\nТелефон: ${payload.phone}\nКто занимается: ${payload.audience}\nКомментарий: ${payload.comment}\nЯзык: ${lang}\nИсточник: ${payload.utm || '-'}`,
       )
       window.location.href = `mailto:${email}?subject=${subject}&body=${body}`
       setStatus('sent')
@@ -67,6 +70,33 @@ export function Contacts() {
         <div className="grid gap-10 lg:grid-cols-2">
           <div data-reveal className="space-y-7">
             <p className="max-w-md text-white/75">{t(content.contacts.cta)}</p>
+
+            <div className="rounded-2xl border border-white/10 bg-ink p-6">
+              <h3 className="font-display text-lg font-semibold uppercase tracking-wide">
+                {t(content.form.trialInfo.title)}
+              </h3>
+              <ul className="mt-4 space-y-3 text-sm leading-relaxed text-white/75">
+                <li className="flex items-start gap-2.5">
+                  <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-brand" />
+                  {t(content.form.trialInfo.forWhom)}
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-brand" />
+                  {t(content.form.trialInfo.replyTime)}
+                </li>
+              </ul>
+              <p className="mt-5 text-xs font-semibold tracking-wide text-white/50 uppercase">
+                {t(content.form.trialInfo.whatToBringTitle)}
+              </p>
+              <ul className="mt-2 space-y-1.5 text-sm text-white/70">
+                {content.form.trialInfo.whatToBring.map((item, index) => (
+                  <li key={index} className="flex items-start gap-2">
+                    <span aria-hidden="true" className="text-brand">•</span>
+                    {t(item)}
+                  </li>
+                ))}
+              </ul>
+            </div>
 
             <div className="space-y-3">
               {content.contacts.phones.map((phone) => (
@@ -142,7 +172,7 @@ export function Contacts() {
                       type="text"
                       name="name"
                       required
-                      className="w-full rounded-xl border border-white/15 bg-ink-2 px-4 py-3 text-sm text-white placeholder-white/30 outline-none focus:border-brand"
+                      className="w-full rounded-xl border border-white/15 bg-ink-2 px-4 py-3 text-base text-white placeholder-white/30 outline-none focus:border-brand sm:text-sm"
                       placeholder={t(content.form.name)}
                     />
                   </label>
@@ -152,7 +182,7 @@ export function Contacts() {
                       type="tel"
                       name="phone"
                       required
-                      className="w-full rounded-xl border border-white/15 bg-ink-2 px-4 py-3 text-sm text-white placeholder-white/30 outline-none focus:border-brand"
+                      className="w-full rounded-xl border border-white/15 bg-ink-2 px-4 py-3 text-base text-white placeholder-white/30 outline-none focus:border-brand sm:text-sm"
                       placeholder={t(content.form.phonePlaceholder)}
                     />
                   </label>
@@ -162,7 +192,7 @@ export function Contacts() {
                   <span className="mb-1.5 block text-sm font-medium text-white/70">{t(content.form.audience)}</span>
                   <select
                     name="audience"
-                    className="w-full rounded-xl border border-white/15 bg-ink-2 px-4 py-3 text-sm text-white outline-none focus:border-brand"
+                    className="w-full rounded-xl border border-white/15 bg-ink-2 px-4 py-3 text-base text-white outline-none focus:border-brand sm:text-sm"
                   >
                     {content.form.audienceOptions.map((option) => (
                       <option key={option.ru} value={option.ru}>
@@ -177,7 +207,7 @@ export function Contacts() {
                   <textarea
                     name="comment"
                     rows={3}
-                    className="w-full resize-none rounded-xl border border-white/15 bg-ink-2 px-4 py-3 text-sm text-white placeholder-white/30 outline-none focus:border-brand"
+                    className="w-full resize-none rounded-xl border border-white/15 bg-ink-2 px-4 py-3 text-base text-white placeholder-white/30 outline-none focus:border-brand sm:text-sm"
                     placeholder={t(content.form.commentPlaceholder)}
                   />
                 </label>
@@ -211,6 +241,20 @@ export function Contacts() {
               </form>
             )}
           </div>
+        </div>
+
+        <div data-reveal className="mt-12 rounded-2xl border border-white/10 bg-ink p-6 md:p-8">
+          <h3 className="font-display text-xl font-semibold uppercase tracking-wide md:text-2xl">
+            {t(content.trustTitle)}
+          </h3>
+          <ul className="mt-5 grid gap-3 sm:grid-cols-2">
+            {content.trust.map((item) => (
+              <li key={item.id} className="flex items-start gap-2.5 text-sm text-white/75">
+                <Check size={16} className="mt-0.5 shrink-0 text-brand" />
+                {t(item.text)}
+              </li>
+            ))}
+          </ul>
         </div>
       </Container>
     </Section>

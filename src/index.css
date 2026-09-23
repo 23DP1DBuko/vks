@@ -15,6 +15,7 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 4.5rem;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -23,6 +24,21 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+/* Мобильные детали: без синей вспышки при тапе и без задержки двойного тапа. */
+a,
+button,
+select,
+label {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 ::selection {

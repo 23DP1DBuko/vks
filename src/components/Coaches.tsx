@@ -1,7 +1,7 @@
-import { Award } from 'lucide-react'
 import { content } from '../content'
 import { useLang } from '../i18n'
 import { Container, Section, SectionHeader } from './Section'
+import { SmartImage } from './SmartImage'
 
 function initials(name: string) {
   return name
@@ -28,31 +28,27 @@ export function Coaches() {
               className="group flex flex-col items-center rounded-2xl border border-white/10 bg-ink p-8 text-center transition-all hover:-translate-y-1 hover:border-brand/50"
             >
               <div className="relative mb-5">
-                <div className="flex h-24 w-24 items-center justify-center rounded-full border-2 border-brand/60 bg-ink-3 font-display text-3xl font-bold text-white">
-                  {initials(coach.name)}
-                </div>
+                <SmartImage
+                  src={coach.photo}
+                  alt={t({
+                    ru: `Тренер ${coach.name}, ${coach.dan} дан`,
+                    en: `Coach ${coach.name}, ${coach.dan} dan`,
+                    lv: `Treneris ${coach.name}, ${coach.dan}. dans`,
+                  })}
+                  aspect="aspect-square"
+                  className="h-28 w-28 rounded-full border-2 border-brand/60"
+                  fallback={
+                    <span className="font-display text-3xl font-bold text-white">
+                      {initials(coach.name)}
+                    </span>
+                  }
+                />
                 <span className="absolute -right-2 -bottom-1 rounded-full bg-brand px-3 py-1 text-xs font-bold text-white shadow-lg">
-                  {coach.dan} DAN
+                  {coach.dan} {t({ ru: 'ДАН', en: 'DAN', lv: 'DANS' })}
                 </span>
               </div>
 
               <h3 className="font-display text-2xl font-semibold uppercase tracking-wide">{coach.name}</h3>
-
-              {coach.certificate ? (
-                <p className="mt-1.5 inline-flex items-center gap-1.5 rounded-full bg-brand/10 px-3 py-1 text-[11px] font-semibold text-brand">
-                  <Award size={12} />
-                  {t({
-                    ru: `Сертифицированный тренер · кат. ${coach.certificate.category} · № ${coach.certificate.number}`,
-                    en: `Certified coach · cat. ${coach.certificate.category} · No. ${coach.certificate.number}`,
-                    lv: `Sertificēta trenere · kat. ${coach.certificate.category} · Nr. ${coach.certificate.number}`,
-                  })}
-                </p>
-              ) : (
-                <p className="mt-1.5 inline-flex items-center gap-1.5 rounded-full bg-white/5 px-3 py-1 text-[11px] font-semibold text-white/50">
-                  <Award size={12} />
-                  {t({ ru: 'Тренер клуба', en: 'Club coach', lv: 'Kluba treneris' })}
-                </p>
-              )}
 
               <p className="mt-4 text-sm leading-relaxed text-white/70">{t(coach.description)}</p>
               {coach.specialty ? (

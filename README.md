@@ -24,15 +24,18 @@ npm run preview  # предпросмотр прод-сборки
 ```
 src/
   content.ts            # ВСЕ тексты и данные сайта (ru/en/lv) — главный файл для правок
-  types.ts              # типы данных (программы, залы, тренеры, тарифы...)
+  types.ts              # типы данных (программы, залы, тренеры, группы...)
   i18n.tsx              # контекст языка + переключатель
+  lib/utm.ts            # приём utm_source/gclid/fbclid для заявок с рекламы
   hooks/useReveal.ts    # GSAP-анимации (data-reveal, data-count)
   components/
     Header / Footer
-    Hero (+ Hero3D — three.js сцена)
+    Hero (+ Hero3D — three.js сцена, если нет фото первого экрана)
     Advantages, Programs, Halls, Coaches, Achievements
-    Reviews (карусель), SocialFeed (лента Facebook), Pricing, Faq, Contacts
-    Section (обёртка + заголовки), icons (SVG Facebook/Instagram)
+    Reviews (карусель), ClubLife (нативный слайдер постов), Faq
+    Pricing (группы по возрасту + бесплатная первая тренировка)
+    SeoBlock (SEO-текст про карате в Риге и Кенгарагсе), Contacts
+    Section (обёртка + заголовки), SmartImage (фото с фолбэком), icons (SVG соцсетей)
 ```
 
 ## Где менять контент
@@ -42,13 +45,16 @@ src/
 ## Что осталось заполнить (плейсхолдеры)
 
 - **Расписание** тренировок по залам (`content.halls`) — сейчас примерные дни/время.
-- **Цены** — сейчас «цена по телефону» (без фиксированных сумм, как просил владелец). Вернуть конкретные € можно в `content.pricing.plans` (`price: number | null`).
+- **Цены** — сейчас «цена по телефону» (без фиксированных сумм, как просил владелец). Вернуть конкретные € можно в `content.pricing.groups` (`price: number | null`) — тогда в карточке группы вместо строки «Цена по телефону» появится сумма.
+- **Группы обучения** (`content.pricing.groups`) — карточки собраны по возрасту и аудитории (4-6, 7-12, подростки и взрослые). Название, описание, ритм занятий и пункты меняются там же; новая группа — новый объект в массиве.
 - **Email** клуба (`content.contacts.email` = `null`).
 - **Достижения** (`content.achievements`) — наполнить из Facebook-ленты клуба.
 - **Логотип** — положить файл в `public/logo.png` — автоматически появится в шапке и подвале (пока показывается запасной знак 拳).
-- **Фото** тренеров — в карточках пока инициалы (добавить поле `photo`).
+- **Фото залов** — положить в `public/images/halls/ikskiles.jpg` и `public/images/halls/latgales.jpg` (пока аккуратная заглушка).
+- **Новости в «Жизни клуба»** — настроить токен Facebook и запустить `npm run sync:fb` (см. раздел «Жизнь клуба: посты из Facebook»).
 - **Форма заявки** — код готов, осталось получить endpoint EmailOctopus и вписать его (пошаговая инструкция ниже в разделе «Форма заявок: EmailOctopus»).
-- **Лента Facebook** — Page Plugin с фолбэком на кнопки; при желании заменить на Graph API с кэшем (см. `src/components/SocialFeed.tsx`).
+- **Реальные посты** в «Жизни клуба» — появляются автоматически после синхронизации; демо-карточки просто перестают показываться.
+- **Домен** — заменить `https://vasilyev-karate.lv` (canonical, OG-теги, sitemap, robots), см. раздел «SEO и локальный поиск».
 
 ## Форма заявок: EmailOctopus (установка)
 
@@ -81,3 +87,63 @@ src/
 - Шрифты Oswald + Inter подключены через Google Fonts (поддержка кириллицы и латышских диакритик).
 - Анимации отключаются при `prefers-reduced-motion: reduce`.
 - Трёхмерная сцена ставится на паузу, когда вкладка скрыта.
+
+## Фото клуба: куда класть файлы
+
+| Что | Путь в проекте | Где появится |
+| --- | --- | --- |
+| Главное фото | `public/hero.jpg` | первый экран (когда фото есть, 3D-сцена не рендерится) |
+| Тренеры | `public/leonid.jpg`, `public/zanna.jpg`, `public/diana.jpg` | карточки тренеров |
+| Залы | `public/images/halls/ikskiles.jpg`, `public/images/halls/latgales.jpg` | карточки залов |
+| Жизнь клуба | `public/images/posts/*.jpg` | карточки слайдера (файлы скачивает `npm run sync:fb`) |
+
+Если файла нет, показывается аккуратная заглушка (инициалы тренера, иконка локации, знак 拳) - сайт не ломается и не показывает «битую» картинку. Пути задаются в `content.ts` (`photo`, `image`), у каждого фото есть alt-текст на трёх языках (`alt`, `imageAlt`).
+
+## Жизнь клуба: посты из Facebook
+
+Секция показывает реальные посты страницы клуба - без iframe и сторонних виджетов. Один пост = одна карточка: фото, описание, дата, ссылка «Смотреть в Facebook». Текст публикуется как есть (без переводов) - так, как клуб написал.
+
+**Как это работает**
+
+- `npm run sync:fb` забирает последние 12 постов через Facebook Graph API, скачивает фото в `public/images/posts/` и генерирует `src/data/facebookPosts.ts`.
+- `ClubLife` берёт данные из этого файла; если он пуст (токен ещё не настроен), показываются демо-карточки из `content.social.posts`.
+- Фото хранятся локально намеренно: ссылки Facebook CDN со временем протухают, а локальные файлы работают всегда и быстро.
+
+**Настройка токена (один раз)**
+
+1. developers.facebook.com → My Apps → Create App (тип Business).
+2. Graph API Explorer: выбрать приложение и страницу клуба, выдать права `pages_show_list` и `pages_read_engagement`, скопировать Page Access Token (в Access Token Debugger можно продлить его до долгоживущего).
+3. Создать в корне `.env.local` (файл уже в `.gitignore`, токен в репозиторий не попадёт):
+   ```
+   FB_PAGE_ID=...
+   FB_PAGE_TOKEN=...
+   ```
+4. `npm run sync:fb` → затем обычный `npm run build` и деплой.
+
+**Автообновление новостей.** Запускать `npm run sync:fb` перед деплоем, либо поставить cron в CI (например, GitHub Actions - раз в сутки), который синхронизирует посты, коммитит `src/data/facebookPosts.ts` и фото, после чего сайт пересобирается. Если нужен полностью «живой» фид без пересборки - потребуется маленькая серверлесс-функция с кэшем (токен остаётся на сервере); текущая схема выбрана, чтобы не тащить бэкенд и не платить за него.
+## SEO и локальный поиск
+
+Настроено: `title`/`description`, canonical, Open Graph (ru/en/lv), Twitter-карточка, JSON-LD `SportsClub` (два зала с адресами и картами, соцсети, 1984, карате) и `WebSite`, `public/robots.txt`, `public/sitemap.xml`, `public/site.webmanifest`, SEO-блок `SeoBlock` перед контактами с текстом про карате в Риге и Кенгарагсе.
+
+**Перед публикацией на реальном домене:** заменить `https://vasilyev-karate.lv` в `index.html` (canonical, og:url, og:image, JSON-LD), в `public/robots.txt` и `public/sitemap.xml`. Дополнительно: сжать `public/favicon.png` (сейчас ~570 КБ) до 512×512 (меньше 50 КБ). Язык по умолчанию для поисковиков - русский (то, что лежит в `index.html`); переключатель RU/EN/LV работает на клиенте.
+
+## Рекламный трафик (Meta Ads / Google Ads)
+
+Готовые якоря для объявлений: `#hero` (первый экран), `#kids` (детские группы), `#programs` (все группы), `#halls` (залы и расписание), `#contacts` (форма заявки).
+
+Примеры ссылок:
+- пробное занятие: `https://vasilyev-karate.lv/?utm_source=facebook&utm_medium=cpc&utm_campaign=trial#contacts`
+- детское карате: `https://vasilyev-karate.lv/?utm_source=google&utm_medium=cpc&utm_campaign=kids#kids`
+- залы: `https://vasilyev-karate.lv/?utm_source=facebook&utm_medium=cpc&utm_campaign=halls#halls`
+
+`utm_source/medium/campaign/content/term`, а также `gclid` и `fbclid` сохраняются в `sessionStorage` (`src/lib/utm.ts`) и уходят вместе с заявкой в поле `utm` - видно, какая кампания принесла заявку. Meta Pixel и GA4 намеренно не подключены (приватность); при необходимости добавляются отдельным скриптом.
+
+## Будущие идеи (не в MVP, архитектура готова)
+
+### Клубный мерч
+
+Модели описаны в `src/types.ts` (закомментированный блок): `Product { id, slug, name, description, images, price, sizes?, active, order }` и `MerchOrder { name, phone, email?, productId, size?, qty, delivery: 'pickup-cash' | 'shipping' | 'payment-link', address?, comment, createdAt, status }`. Заявку можно отправлять тем же способом, что и форму записи (endpoint / mailto), позже - в Strapi. Компоненты на будущее: `MerchSection`, `ProductCard`, `OrderForm`; место в навигации зарезервировано после FAQ (пункт меню пока не показываем, чтобы не вести в пустоту).
+
+### Баннеры и попап-баннер
+
+Модели `Banner { placement, image, imageAlt, title?, ctaLabel?, ctaLink?, activeFrom?, activeTo?, isActive, priority }` и `PopupBanner { ...те же..., description?, displayDelay }` - тоже описаны в `types.ts`. Логика попапа на будущее: страница грузится как обычно, затем через `displayDelay` мс показывается модалка с картинкой, alt, заголовком, текстом, кнопкой CTA и крестиком в правом верхнем углу; одновременно активен только один баннер (выбирается по `priority` внутри окна `activeFrom`/`activeTo`), закрытие запоминается в `localStorage`, есть закрытие по Escape и клику по фону. Компоненты на будущее: `PromoBanner`, `PopupBanner`. Готовая инфраструктура - `SmartImage` (картинка + fallback) и `content`-структура.

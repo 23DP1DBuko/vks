@@ -10,11 +10,20 @@ import { Halls } from './components/Halls'
 import { Coaches } from './components/Coaches'
 import { Achievements } from './components/Achievements'
 import { Reviews } from './components/Reviews'
-import { SocialFeed } from './components/SocialFeed'
+import { ClubLife } from './components/ClubLife'
 import { Pricing } from './components/Pricing'
 import { Faq } from './components/Faq'
+import { SeoBlock } from './components/SeoBlock'
 import { Contacts } from './components/Contacts'
 import { Footer } from './components/Footer'
+import type { Lang } from './types'
+
+/** og:locale для каждого языка сайта. */
+const OG_LOCALES: Record<Lang, string> = { ru: 'ru_LV', en: 'en_LV', lv: 'lv_LV' }
+
+function setMeta(selector: string, value: string) {
+  document.querySelector(selector)?.setAttribute('content', value)
+}
 
 function Site() {
   const { lang } = useLang()
@@ -22,10 +31,17 @@ function Site() {
   useReveal(lang)
 
   useEffect(() => {
-    document.title = content.site.meta.title[lang]
-    document
-      .querySelector('meta[name="description"]')
-      ?.setAttribute('content', content.site.meta.description[lang])
+    const title = content.site.meta.title[lang]
+    const description = content.site.meta.description[lang]
+
+    document.title = title
+    setMeta('meta[name="description"]', description)
+    // OG/Twitter держим синхронно с языком; краулер по умолчанию видит RU-версию из index.html.
+    setMeta('meta[property="og:title"]', title)
+    setMeta('meta[property="og:description"]', description)
+    setMeta('meta[property="og:locale"]', OG_LOCALES[lang])
+    setMeta('meta[name="twitter:title"]', title)
+    setMeta('meta[name="twitter:description"]', description)
     document.documentElement.lang = lang
   }, [lang])
 
@@ -40,9 +56,10 @@ function Site() {
         <Coaches />
         <Achievements />
         <Reviews />
-        {content.social.enabled && <SocialFeed />}
+        {content.social.enabled && <ClubLife />}
         <Pricing />
         <Faq />
+        <SeoBlock />
         <Contacts />
       </main>
       <Footer />

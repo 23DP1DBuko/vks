@@ -14,6 +14,8 @@ export function Programs() {
 
   return (
     <Section id="programs" className="bg-ink-2">
+      {/* id="kids" - якорь для рекламных кампаний про детские группы. */}
+      <span id="kids" className="block scroll-mt-20" aria-hidden="true" />
       <Container>
         <SectionHeader kicker={t(section.kicker)} title={t(section.title)} subtitle={section.subtitle ? t(section.subtitle) : undefined} />
 
