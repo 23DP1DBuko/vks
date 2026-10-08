@@ -16,7 +16,7 @@
 **Факты о клубе Vasilyev Karate Club:**
 - Название: Vasilyev Karate Club / Vasiljevu karatē skola (Vasiljev's Karate School).
 - Основан: **1984** (более 40 лет; 2024 — юбилей 40 лет).
-- Тренеры: **Leonīds Vasiļjevs — 8 дан** (основатель), **Žanna Vasiļjeva — 5 дан** (сертификат ЛФК, категория C, № 2622, действовал до 11.11.2025 — проверить актуальность), **Diana Tokare — 2 дан**.
+- Тренеры: **Leonīds Vasiļjevs — 8 дан** (основатель), **Žanna Vasiļjeva — 5 дан** (сертификат ЛФК, категория C, № 2622, действовал до 11.11.2025 — проверить актуальность), **Diana Tokare — 2 дан**, **Olga Halvitova** (Ольга Халвитова) — ОФП, дети (степень карате не указана).
 - Залы: **Зал 1 — Ikšķiles iela 6** (Rīgas 72. vidusskola, малый спортивный зал, 3-й этаж); **Зал 2 — Latgales iela 322**. Оба — Rīga, LV-1057.
 - Телефоны (с флаера): **29 172 572** и **29 757 753**.
 - Соцсети: Facebook — facebook.com/eurokaratedo (и «Vasilyevs Karate School»), Instagram — instagram.com/vasilyev_karate.
@@ -215,6 +215,11 @@
    - RU: Тренер клуба, 2 дан. Специализация: детские группы, общая физическая подготовка, подготовка к экзаменам на пояса. `[описание уточнить]`
    - EN: Club coach, 2nd dan. Specialisation: kids' groups, general fitness, belt exam preparation. `[description to confirm]`
    - LV: Kluba trenere, 2. dans. Specializācija: bērnu grupas, vispārējā fiziskā sagatavotība, sagatavošanās jostu eksāmeniem. `[apraksts jāprecizē]`
+4. **Ольга Халвитова** / Olga Halvitova — **степени карате нет** (в карточке показывается бейдж «ОФП»)
+   - RU: Инструктор клуба: общая физическая подготовка в детских группах.
+   - EN: Club instructor: general physical training in the kids' groups.
+   - LV: Kluba instruktore: vispārējā fiziskā sagatavotība bērnu grupās.
+   - `[уточнить: фото public/olga.jpg; есть ли у неё степень/сертификат; с какими группами работает — 4-6, 7-12 или обе]`
 
 ### 3.6 «Достижения и мероприятия»
 
@@ -455,5 +460,5 @@ App (роутер SPA с якорями + LanguageProvider + контент {ru,
 - Реальные достижения (наполнить из Facebook-ленты).
 - Реальные отзывы (сейчас — примеры; заменить на реальные с разрешения авторов).
 - Фото тренеров (в т.ч. Diana Tokare) и залов.
-- Кому отправляется форма заявки: вписать endpoint сервиса приёма форм (EmailOctopus) в `content.form.endpoint` в `src/content.ts`.
+- Кому отправляется форма заявки: получить бесплатный ключ Web3Forms на нужный ящик и вписать в `content.form.accessKey` в `src/content.ts` (см. README, раздел «Форма заявок: Web3Forms»).
 - Актуальность сертификата Жанны Васильевой (указан срок до 11.11.2025).

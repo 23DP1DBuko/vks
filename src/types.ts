@@ -65,7 +65,10 @@ export interface Hall {
 export interface Coach {
   id: string
   name: string
-  dan: number
+  /** Степень карате (дан). Нет степени - вместо бейджа с даном показываем `badge`. */
+  dan?: number
+  /** Бейдж для тренера без степени, напр. 'ОФП'. Не выдумываем дан, если его нет. */
+  badge?: Localized
   description: Localized
   specialty?: Localized
   certificate?: { category: string; number: string; validUntil: string }

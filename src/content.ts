@@ -86,9 +86,9 @@ export const SECTIONS: Record<
     kicker: { ru: '04 · Команда', en: '04 · Team', lv: '04 · Komanda' },
     title: { ru: 'Тренеры', en: 'Coaches', lv: 'Treneri' },
     subtitle: {
-      ru: 'Занятия ведут мастера с высшими степенями - от детских групп до соревновательной подготовки.',
-      en: 'Classes are led by masters with the highest ranks - from kids’ groups to competition training.',
-      lv: 'Nodarbības vada meistari ar augstākajām pakāpēm - no bērnu grupām līdz sacensību sagatavošanai.',
+      ru: 'Занятия ведут мастера с высшими степенями и инструктор по ОФП - от детских групп до соревновательной подготовки.',
+      en: 'Classes are led by masters with the highest ranks and a physical-training instructor - from kids’ groups to competition training.',
+      lv: 'Nodarbības vada meistari ar augstākajām pakāpēm un vispārējās fiziskās sagatavotības instruktore - no bērnu grupām līdz sacensību sagatavošanai.',
     },
   },
   achievements: {
@@ -218,6 +218,12 @@ export const content = {
       ru: 'Смотреть расписание',
       en: 'See the schedule',
       lv: 'Skatīt nodarbību grafiku',
+    } as Localized,
+    /** Короткая версия для телефонов: в половину ширины длинная подпись не влезает. */
+    cta2Short: {
+      ru: 'Расписание',
+      en: 'Schedule',
+      lv: 'Grafiks',
     } as Localized,
     ctaShort: {
       ru: 'Первая тренировка',
@@ -466,6 +472,27 @@ export const content = {
         ru: 'Детские группы · ОФП',
         en: 'Kids’ groups · general fitness',
         lv: 'Bērnu grupas · vispārējā sagatavotība',
+      },
+    },
+    {
+      id: 'olga',
+      photo: '/olga.jpg',
+      name: 'Olga Halvitova',
+      /* Степени карате нет - на бейдже указываем направление работы, а не выдуманный дан. */
+      badge: {
+        ru: 'ОФП',
+        en: 'FITNESS',
+        lv: 'VFS',
+      },
+      description: {
+        ru: 'Инструктор клуба: общая физическая подготовка в детских группах.',
+        en: 'Club instructor: general physical training in the kids’ groups.',
+        lv: 'Kluba instruktore: vispārējā fiziskā sagatavotība bērnu grupās.',
+      },
+      specialty: {
+        ru: 'Дети',
+        en: 'Kids',
+        lv: 'Bērni',
       },
     },
   ] as Coach[],
@@ -886,6 +913,27 @@ export const content = {
   contacts: {
     phones: ['+371 29 172 572', '+371 29 757 753'],
     email: null as string | null,
+    /**
+     * WhatsApp: кнопка «Написать в WhatsApp» открывает чат с уже готовым текстом.
+     * ВАЖНО: указать номер, на котором у клуба действительно есть WhatsApp.
+     */
+    whatsapp: '+371 29 172 572',
+    whatsappLabel: {
+      ru: 'Написать в WhatsApp',
+      en: 'Message us on WhatsApp',
+      lv: 'Rakstīt WhatsApp',
+    } as Localized,
+    /** Короткая подпись (название бренда не переводится) - для тесных кнопок на телефоне. */
+    whatsappLabelShort: {
+      ru: 'WhatsApp',
+      en: 'WhatsApp',
+      lv: 'WhatsApp',
+    } as Localized,
+    whatsappMessage: {
+      ru: 'Здравствуйте! Хочу записаться на бесплатную пробную тренировку.',
+      en: "Hello! I'd like to book a free trial class.",
+      lv: 'Sveiki! Vēlos pieteikties izmēģinājuma nodarbībai.',
+    } as Localized,
     socials: [
       { name: 'facebook', url: 'https://www.facebook.com/eurokaratedo' },
       { name: 'instagram', url: 'https://www.instagram.com/vasilyev_karate' },
@@ -901,11 +949,6 @@ export const content = {
         address: 'Latgales iela 322, Rīga, LV-1057',
       },
     ] as HallAddress[],
-    cta: {
-      ru: 'Напишите нам или оставьте заявку - мы ответим в течение дня.',
-      en: 'Write to us or leave a request - we will reply within a day.',
-      lv: 'Rakstiet mums vai atstājiet pieprasījumu - atbildēsim dienas laikā.',
-    } as Localized,
   },
 
   seoBlock: {
@@ -935,8 +978,13 @@ export const content = {
 
   form: {
     title: { ru: 'Оставьте заявку', en: 'Leave a request', lv: 'Atstājiet pieprasījumu' } as Localized,
-    /** URL сервиса приёма заявок (например, EmailOctopus form endpoint). null = фолбэк на mailto. */
-    endpoint: null as string | null,
+    /**
+     * Ключ Web3Forms (бесплатный релей «форма → письмо»): вписывает владелец.
+     * Получить: web3forms.com → ввести email администратора → подтвердить ссылку из письма.
+     * Ключ не секретный - он лишь указывает, на какой ящик отправлять заявки.
+     * null = релей выключен, работают фолбэки (mailto или ошибка с телефоном).
+     */
+    accessKey: null as string | null,
     /** Что нужно знать перед пробной тренировкой - показываем рядом с формой. */
     trialInfo: {
       title: { ru: 'Пробная тренировка', en: 'Trial class', lv: 'Izmēģinājuma nodarbība' },
@@ -962,9 +1010,9 @@ export const content = {
           lv: 'Ērts sporta apģērbs - t-krekls un bikses',
         },
         {
-          ru: 'Сменная обувь и бутылка воды',
-          en: 'Indoor shoes and a bottle of water',
-          lv: 'Maiņas apavi un ūdens pudele',
+          ru: 'Кроксы или сланцы для зала и бутылка воды',
+          en: 'Crocs or sandals for indoors, and a bottle of water',
+          lv: 'Kroksi vai sandales zālei un ūdens pudele',
         },
         {
           ru: 'Кимоно понадобится позже - подскажем, где купить',
@@ -976,13 +1024,14 @@ export const content = {
     name: { ru: 'Имя', en: 'Name', lv: 'Vārds' } as Localized,
     phone: { ru: 'Телефон', en: 'Phone', lv: 'Tālrunis' } as Localized,
     phonePlaceholder: { ru: '+371 ...', en: '+371 ...', lv: '+371 ...' } as Localized,
-    audience: { ru: 'Кто будет заниматься?', en: 'Who will train?', lv: 'Kas trenēsies?' } as Localized,
-    audienceOptions: [
-      { ru: 'Ребёнок 4-6 лет', en: 'Child 4-6', lv: 'Bērns 4-6 gadi' },
-      { ru: 'Ребёнок 7-12 лет', en: 'Child 7-12', lv: 'Bērns 7-12 gadi' },
-      { ru: 'Подросток 13-16 лет', en: 'Teen 13-16', lv: 'Pusaudzis 13-16 gadi' },
-      { ru: 'Взрослый', en: 'Adult', lv: 'Pieaugušais' },
-    ] as Localized[],
+    /* Возраст спрашиваем свободным полем - группу тренеры подберут сами. */
+    age: { ru: 'Возраст ребёнка', en: "Child's age", lv: 'Bērna vecums' } as Localized,
+    agePlaceholder: { ru: 'Например, 7', en: 'e.g. 7', lv: 'Piemēram, 7' } as Localized,
+    ageHint: {
+      ru: 'Если будет заниматься взрослый - напишите свой возраст.',
+      en: 'If an adult is joining, just enter your own age.',
+      lv: 'Ja trenēsies pieaugušais - ierakstiet savu vecumu.',
+    } as Localized,
     comment: { ru: 'Комментарий', en: 'Comment', lv: 'Komentārs' } as Localized,
     commentPlaceholder: { ru: 'Вопросы, удобное время...', en: 'Questions, preferred time...', lv: 'Jautājumi, ērts laiks...' } as Localized,
     submit: { ru: 'Отправить заявку', en: 'Send request', lv: 'Nosūtīt pieprasījumu' } as Localized,

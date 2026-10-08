@@ -1,6 +1,8 @@
 import { content } from '../content'
 import { useLang } from '../i18n'
+import { whatsappHref } from '../lib/whatsapp'
 import { Hero3D } from './Hero3D'
+import { WhatsAppIcon } from './icons'
 import { HeartPulse, Shield, Timer, Trophy } from 'lucide-react'
 
 const VALUE_ICONS = [HeartPulse, Timer, Shield, Trophy]
@@ -49,18 +51,34 @@ export function Hero() {
           {t(content.hero.paragraph)}
         </p>
 
-        <div className="mt-5 flex flex-col gap-2.5 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
+        {/*
+         * На телефоне - две строки: основная кнопка на всю ширину и под ней две короткие.
+         * Так WhatsApp добавляется без роста первого экрана (он должен влезать в высоту телефона).
+         */}
+        <div className="mt-5 grid grid-cols-2 gap-2.5 sm:mt-8 sm:flex sm:flex-wrap sm:items-center sm:gap-4">
           <a
             href="#contacts"
-            className="rounded-full bg-brand px-6 py-3 text-center text-sm font-semibold text-white shadow-lg shadow-brand/30 transition-all hover:-translate-y-0.5 hover:bg-brand-dark sm:px-7 sm:py-3.5 sm:text-base"
+            className="col-span-2 rounded-full bg-brand px-6 py-3 text-center text-sm font-semibold text-white shadow-lg shadow-brand/30 transition-all hover:-translate-y-0.5 hover:bg-brand-dark sm:col-span-1 sm:px-7 sm:py-3.5 sm:text-base"
           >
             {t(content.hero.cta1)}
           </a>
           <a
             href="#halls"
-            className="rounded-full border border-white/25 px-6 py-3 text-center text-sm font-semibold text-white transition-colors hover:border-white/60 sm:px-7 sm:py-3.5 sm:text-base"
+            className="rounded-full border border-white/25 px-3 py-3 text-center text-[13px] font-semibold text-white transition-colors hover:border-white/60 sm:px-7 sm:py-3.5 sm:text-base"
           >
-            {t(content.hero.cta2)}
+            <span className="sm:hidden">{t(content.hero.cta2Short)}</span>
+            <span className="hidden sm:inline">{t(content.hero.cta2)}</span>
+          </a>
+          {/* Один тап в WhatsApp с готовым текстом заявки - без анкеты и звонка. */}
+          <a
+            href={whatsappHref(t(content.contacts.whatsappMessage))}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 px-3 py-3 text-center text-[13px] font-semibold text-white transition-colors hover:border-white/60 sm:px-7 sm:py-3.5 sm:text-base"
+          >
+            <WhatsAppIcon size={16} className="text-brand" />
+            <span className="sm:hidden">{t(content.contacts.whatsappLabelShort)}</span>
+            <span className="hidden sm:inline">{t(content.contacts.whatsappLabel)}</span>
           </a>
         </div>
 

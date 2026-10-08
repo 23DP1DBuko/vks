@@ -1,0 +1,83 @@
+npm notice run vasilyev-karate-club@0.1.0 dev
+npm notice run vite --port 5199 --strictPort
+
+  [32m[1mVITE[22m v8.2.1[39m  [2mready in [0m[1m259[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m5199[22m/[39m
+[2m  [32m➜[39m  [1mNetwork[22m[2m: use [22m[1m--host[22m[2m to expose[22m
+[2m21:56:18[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css[22m
+[2m21:56:18[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css[22m
+[2m21:56:18[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css[22m
+[2m21:56:18[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css[22m
+[2m21:56:18[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css[22m
+[2m22:02:26[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css[22m
+[2m22:02:26[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/components/Header.tsx, /src/components/Hero.tsx, /src/components/Coaches.tsx, /src/components/Programs.tsx, /src/components/Advantages.tsx, /src/components/Achievements.tsx, /src/components/Faq.tsx, /src/components/Halls.tsx, /src/components/Reviews.tsx, /src/components/Pricing.tsx, /src/components/SeoBlock.tsx, /src/components/Contacts.tsx, /src/components/Footer.tsx, /src/components/ClubLife.tsx, /src/index.css[22m
+[2m22:02:36[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/ClubLife.tsx, /src/index.css[22m
+[2m22:02:42[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/index.css[22m
+[2m22:02:42[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to resolve import "../data/facebookPosts" from "src/components/ClubLife.tsx". Does the file exist?[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mC:/Users/rutis/OneDrive/Desktop/vks/src/components/ClubLife.tsx[39m:5:31
+[33m  3  |  import { FacebookIcon, InstagramIcon, TikTokIcon } from "./icons";
+  4  |  import { SmartImage } from "./SmartImage";
+  5  |  import { FACEBOOK_POSTS } from "../data/facebookPosts";
+     |                                  ^
+  6  |  import { content } from "../content";
+  7  |  import { useLang } from "../i18n";[39m
+      at TransformPluginContext._formatLog (file:///C:/Users/rutis/OneDrive/Desktop/vks/node_modules/vite/dist/node/chunks/node.js:31066:39)
+      at TransformPluginContext.error (file:///C:/Users/rutis/OneDrive/Desktop/vks/node_modules/vite/dist/node/chunks/node.js:31063:14)
+      at normalizeUrl (file:///C:/Users/rutis/OneDrive/Desktop/vks/node_modules/vite/dist/node/chunks/node.js:28008:18)
+      at async file:///C:/Users/rutis/OneDrive/Desktop/vks/node_modules/vite/dist/node/chunks/node.js:28076:30
+      at async Promise.all (index 4)
+      at async TransformPluginContext.transform (file:///C:/Users/rutis/OneDrive/Desktop/vks/node_modules/vite/dist/node/chunks/node.js:28044:4)
+      at async EnvironmentPluginContainer.transform (file:///C:/Users/rutis/OneDrive/Desktop/vks/node_modules/vite/dist/node/chunks/node.js:30851:14)
+      at async loadAndTransform (file:///C:/Users/rutis/OneDrive/Desktop/vks/node_modules/vite/dist/node/chunks/node.js:20619:26)
+[2m22:02:42[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to resolve import "../data/facebookPosts" from "src/components/ClubLife.tsx". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mC:/Users/rutis/OneDrive/Desktop/vks/src/components/ClubLife.tsx[39m:5:31
+[33m  3  |  import { FacebookIcon, InstagramIcon, TikTokIcon } from "./icons";
+  4  |  import { SmartImage } from "./SmartImage";
+  5  |  import { FACEBOOK_POSTS } from "../data/facebookPosts";
+     |                                  ^
+  6  |  import { content } from "../content";
+  7  |  import { useLang } from "../i18n";[39m
+[2m22:02:42[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Failed to resolve import "../data/facebookPosts" from "src/components/ClubLife.tsx". Does the file exist?
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mC:/Users/rutis/OneDrive/Desktop/vks/src/components/ClubLife.tsx[39m:5:31
+[33m  3  |  import { FacebookIcon, InstagramIcon, TikTokIcon } from "./icons";
+  4  |  import { SmartImage } from "./SmartImage";
+  5  |  import { FACEBOOK_POSTS } from "../data/facebookPosts";
+     |                                  ^
+  6  |  import { content } from "../content";
+  7  |  import { useLang } from "../i18n";[39m
+[2m22:02:42[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m22:03:15[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css[22m
+[2m22:03:27[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css[22m
+[2m22:03:27[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css[22m
+[2m22:03:27[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css[22m
+[2m22:10:45[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/components/Header.tsx, /src/components/Hero.tsx, /src/components/Coaches.tsx, /src/components/Programs.tsx, /src/components/Advantages.tsx, /src/components/Achievements.tsx, /src/components/Faq.tsx, /src/components/Halls.tsx, /src/components/Reviews.tsx, /src/components/Pricing.tsx, /src/components/SeoBlock.tsx, /src/components/Contacts.tsx, /src/components/Footer.tsx, /src/components/ClubLife.tsx, /src/index.css[22m
+[2m22:10:56[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/components/Header.tsx, /src/components/Hero.tsx, /src/components/Coaches.tsx, /src/components/Programs.tsx, /src/components/Advantages.tsx, /src/components/Achievements.tsx, /src/components/Faq.tsx, /src/components/Halls.tsx, /src/components/Reviews.tsx, /src/components/Pricing.tsx, /src/components/SeoBlock.tsx, /src/components/Contacts.tsx, /src/components/Footer.tsx, /src/components/ClubLife.tsx, /src/index.css[22m
+[2m22:10:56[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css[22m
+[2m22:10:56[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/Hero.tsx, /src/index.css[22m
+[2m22:10:56[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/Coaches.tsx, /src/index.css[22m
+[2m22:11:08[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css[22m
+[2m22:11:08[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css[22m
+[2m22:19:27[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/components/Header.tsx, /src/components/Hero.tsx, /src/components/Coaches.tsx, /src/components/Programs.tsx, /src/components/Advantages.tsx, /src/components/Achievements.tsx, /src/components/Faq.tsx, /src/components/Halls.tsx, /src/components/Reviews.tsx, /src/components/Pricing.tsx, /src/components/SeoBlock.tsx, /src/components/Contacts.tsx, /src/components/Footer.tsx, /src/components/ClubLife.tsx, /src/index.css[22m
+[2m22:19:27[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/Hero.tsx, /src/index.css[22m
+[2m22:19:35[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/Header.tsx, /src/index.css[22m
+[2m22:21:01[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/index.css[22m
+[2m22:21:01[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/index.css[22m
+[2m22:22:13[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/Hero.tsx, /src/index.css[22m
+[2m22:23:25[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css[22m
+[2m22:23:25[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/Contacts.tsx, /src/index.css[22m
+[2m22:23:33[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/Header.tsx, /src/index.css[22m
+[2m22:23:33[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/Hero.tsx, /src/index.css[22m
+[2m22:25:50[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css[22m
+[2m22:25:50[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css[22m
+[2m22:29:50[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css[22m
+[2m22:29:50[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/components/Hero.tsx, /src/components/Coaches.tsx, /src/components/Programs.tsx, /src/components/Advantages.tsx, /src/components/Achievements.tsx, /src/components/Faq.tsx, /src/components/Halls.tsx, /src/components/Reviews.tsx, /src/components/Pricing.tsx, /src/components/SeoBlock.tsx, /src/components/Contacts.tsx, /src/components/Footer.tsx, /src/components/ClubLife.tsx, /src/components/Header.tsx, /src/index.css[22m
+[2m22:30:07[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/components/Hero.tsx, /src/components/Coaches.tsx, /src/components/Programs.tsx, /src/components/Advantages.tsx, /src/components/Achievements.tsx, /src/components/Faq.tsx, /src/components/Halls.tsx, /src/components/Reviews.tsx, /src/components/Pricing.tsx, /src/components/SeoBlock.tsx, /src/components/Contacts.tsx, /src/components/Footer.tsx, /src/components/ClubLife.tsx, /src/components/Header.tsx, /src/index.css[22m
+[2m22:30:17[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/components/Hero.tsx, /src/components/Coaches.tsx, /src/components/Programs.tsx, /src/components/Advantages.tsx, /src/components/Achievements.tsx, /src/components/Faq.tsx, /src/components/Halls.tsx, /src/components/Reviews.tsx, /src/components/Pricing.tsx, /src/components/SeoBlock.tsx, /src/components/Contacts.tsx, /src/components/Footer.tsx, /src/components/ClubLife.tsx, /src/components/Header.tsx, /src/index.css[22m
+[2m22:30:28[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/Pricing.tsx, /src/index.css[22m
+[2m22:31:06[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/components/Hero.tsx, /src/components/Coaches.tsx, /src/components/Programs.tsx, /src/components/Advantages.tsx, /src/components/Achievements.tsx, /src/components/Faq.tsx, /src/components/Halls.tsx, /src/components/Reviews.tsx, /src/components/Pricing.tsx, /src/components/SeoBlock.tsx, /src/components/Contacts.tsx, /src/components/Footer.tsx, /src/components/ClubLife.tsx, /src/components/Header.tsx, /src/index.css[22m
+[2m22:31:43[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/components/Hero.tsx, /src/components/Coaches.tsx, /src/components/Programs.tsx, /src/components/Advantages.tsx, /src/components/Achievements.tsx, /src/components/Faq.tsx, /src/components/Halls.tsx, /src/components/Reviews.tsx, /src/components/Pricing.tsx, /src/components/SeoBlock.tsx, /src/components/Contacts.tsx, /src/components/Footer.tsx, /src/components/ClubLife.tsx, /src/components/Header.tsx, /src/index.css[22m
+[2m22:33:19[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/App.tsx, /src/components/Hero.tsx, /src/components/Coaches.tsx, /src/components/Programs.tsx, /src/components/Advantages.tsx, /src/components/Achievements.tsx, /src/components/Faq.tsx, /src/components/Halls.tsx, /src/components/Reviews.tsx, /src/components/Pricing.tsx, /src/components/SeoBlock.tsx, /src/components/Contacts.tsx, /src/components/Footer.tsx, /src/components/ClubLife.tsx, /src/components/Header.tsx, /src/index.css[22m

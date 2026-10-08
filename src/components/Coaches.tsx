@@ -20,7 +20,8 @@ export function Coaches() {
       <Container>
         <SectionHeader kicker={t(section.kicker)} title={t(section.title)} subtitle={section.subtitle ? t(section.subtitle) : undefined} />
 
-        <div className="grid gap-6 md:grid-cols-3">
+        {/* Четверо тренеров: на планшете 2×2, четыре в ряд - только с xl, иначе карточки сжимаются. */}
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
           {content.coaches.map((coach) => (
             <article
               key={coach.id}
@@ -30,11 +31,19 @@ export function Coaches() {
               <div className="relative mb-5">
                 <SmartImage
                   src={coach.photo}
-                  alt={t({
-                    ru: `Тренер ${coach.name}, ${coach.dan} дан`,
-                    en: `Coach ${coach.name}, ${coach.dan} dan`,
-                    lv: `Treneris ${coach.name}, ${coach.dan}. dans`,
-                  })}
+                  alt={
+                    coach.dan != null
+                      ? t({
+                          ru: `Тренер ${coach.name}, ${coach.dan} дан`,
+                          en: `Coach ${coach.name}, ${coach.dan} dan`,
+                          lv: `Treneris ${coach.name}, ${coach.dan}. dans`,
+                        })
+                      : t({
+                          ru: `Тренер ${coach.name}`,
+                          en: `Coach ${coach.name}`,
+                          lv: `Treneris ${coach.name}`,
+                        })
+                  }
                   aspect="aspect-square"
                   className="h-28 w-28 rounded-full border-2 border-brand/60"
                   fallback={
@@ -43,9 +52,16 @@ export function Coaches() {
                     </span>
                   }
                 />
-                <span className="absolute -right-2 -bottom-1 rounded-full bg-brand px-3 py-1 text-xs font-bold text-white shadow-lg">
-                  {coach.dan} {t({ ru: 'ДАН', en: 'DAN', lv: 'DANS' })}
-                </span>
+                {/* Бейдж: степень карате - или направление работы, если степени нет. */}
+                {coach.dan != null ? (
+                  <span className="absolute -right-2 -bottom-1 rounded-full bg-brand px-3 py-1 text-xs font-bold text-white shadow-lg">
+                    {coach.dan} {t({ ru: 'ДАН', en: 'DAN', lv: 'DANS' })}
+                  </span>
+                ) : coach.badge ? (
+                  <span className="absolute -right-2 -bottom-1 rounded-full bg-brand px-3 py-1 text-xs font-bold tracking-wide text-white uppercase shadow-lg">
+                    {t(coach.badge)}
+                  </span>
+                ) : null}
               </div>
 
               <h3 className="font-display text-2xl font-semibold uppercase tracking-wide">{coach.name}</h3>

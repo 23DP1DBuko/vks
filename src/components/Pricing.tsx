@@ -1,7 +1,9 @@
 import { Check, Gift, Phone, Send } from 'lucide-react'
 import { content } from '../content'
 import { useLang } from '../i18n'
+import { whatsappHref, whatsappMessage } from '../lib/whatsapp'
 import { Container, Section, SectionHeader } from './Section'
+import { WhatsAppIcon } from './icons'
 
 /**
  * «Группы для детей и взрослых».
@@ -81,24 +83,36 @@ export function Pricing() {
                 ))}
               </ul>
 
-              {/* В выделенной группе ведём в форму заявки, в остальных - предлагаем сразу позвонить. */}
-              {group.highlighted ? (
+              <div className="mt-7 flex flex-col gap-3">
+                {/* В выделенной группе ведём в форму заявки, в остальных - предлагаем сразу позвонить. */}
+                {group.highlighted ? (
+                  <a
+                    href="#contacts"
+                    className="inline-flex items-center justify-center gap-2 rounded-full bg-brand px-5 py-3 text-center text-sm font-semibold text-white transition-colors hover:bg-brand-dark"
+                  >
+                    <Send size={16} />
+                    {t(pricing.requestLabel)}
+                  </a>
+                ) : (
+                  <a
+                    href={`tel:${firstPhone}`}
+                    className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 px-5 py-3 text-center text-sm font-semibold text-white transition-colors hover:border-brand hover:text-brand"
+                  >
+                    <Phone size={16} />
+                    {t(pricing.callLabel)}
+                  </a>
+                )}
+                {/* Один тап в WhatsApp: в готовом тексте уже указана группа. */}
                 <a
-                  href="#contacts"
-                  className="mt-7 inline-flex items-center justify-center gap-2 rounded-full bg-brand px-5 py-3 text-center text-sm font-semibold text-white transition-colors hover:bg-brand-dark"
+                  href={whatsappHref(whatsappMessage(t(content.contacts.whatsappMessage), t(group.name)))}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center gap-2 text-sm font-semibold text-brand transition-colors hover:text-white"
                 >
-                  <Send size={16} />
-                  {t(pricing.requestLabel)}
+                  <WhatsAppIcon size={15} />
+                  {t(content.contacts.whatsappLabel)}
                 </a>
-              ) : (
-                <a
-                  href={`tel:${firstPhone}`}
-                  className="mt-7 inline-flex items-center justify-center gap-2 rounded-full border border-white/25 px-5 py-3 text-center text-sm font-semibold text-white transition-colors hover:border-brand hover:text-brand"
-                >
-                  <Phone size={16} />
-                  {t(pricing.callLabel)}
-                </a>
-              )}
+              </div>
             </article>
           ))}
         </div>

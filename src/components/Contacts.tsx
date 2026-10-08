@@ -1,16 +1,18 @@
 import { useState, type FormEvent } from 'react'
 import { AlertCircle, Check, CheckCircle2, Mail, MapPin, Phone, Send } from 'lucide-react'
-import { FacebookIcon, InstagramIcon, TikTokIcon } from './icons'
+import { FacebookIcon, InstagramIcon, TikTokIcon, WhatsAppIcon } from './icons'
 import { content } from '../content'
 import { useLang } from '../i18n'
 import { utmSummary } from '../lib/utm'
+import { whatsappHref } from '../lib/whatsapp'
 import { Container, Section, SectionHeader } from './Section'
 
 type FormStatus = 'idle' | 'sending' | 'sent' | 'error'
 
 /**
  * Форма заявки. Отправка:
- * 1) если задан `content.form.endpoint` (сервис приёма форм, напр. EmailOctopus) - POST FormData;
+ * 1) если задан `content.form.accessKey` - POST JSON на Web3Forms (сервис пересылает
+ *    заявку письмом на ящик владельца ключа) - см. README, раздел «Форма заявок»;
  * 2) иначе, если задан `contacts.email` - фолбэк на mailto (почтовый клиент);
  * 3) иначе - показываем ошибку с телефоном (форма не настроена).
  */
@@ -18,9 +20,10 @@ export function Contacts() {
   const { t, lang } = useLang()
   const section = content.sections.contacts
   const [status, setStatus] = useState<FormStatus>('idle')
-  const endpoint = content.form.endpoint
+  const accessKey = content.form.accessKey
   const email = content.contacts.email
   const firstPhone = content.contacts.phones[0].replace(/\s/g, '')
+  const whatsappUrl = whatsappHref(t(content.contacts.whatsappMessage))
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -28,20 +31,28 @@ export function Contacts() {
     const payload: Record<string, string> = {
       name: String(data.get('name') ?? ''),
       phone: String(data.get('phone') ?? ''),
-      audience: String(data.get('audience') ?? ''),
+      age: String(data.get('age') ?? ''),
       comment: String(data.get('comment') ?? ''),
       lang,
       /* Источник заявки: utm_source/gclid/fbclid и т.д. (см. lib/utm.ts) */
       utm: utmSummary(),
     }
 
-    if (endpoint) {
+    if (accessKey) {
       setStatus('sending')
       try {
-        const formData = new FormData()
-        Object.entries(payload).forEach(([key, value]) => formData.append(key, value))
-        const res = await fetch(endpoint, { method: 'POST', body: formData })
-        if (!res.ok) throw new Error(`HTTP ${res.status}`)
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({
+            access_key: accessKey,
+            subject: `${t(content.site.clubName)} - заявка от ${payload.name}`,
+            from_name: t(content.site.clubName),
+            ...payload,
+          }),
+        })
+        const data: { success?: boolean } | null = await res.json().catch(() => null)
+        if (!res.ok || !data?.success) throw new Error(`HTTP ${res.status}`)
         setStatus('sent')
       } catch {
         setStatus('error')
@@ -52,7 +63,7 @@ export function Contacts() {
     if (email) {
       const subject = encodeURIComponent(`${t(content.site.clubName)} - заявка от ${payload.name}`)
       const body = encodeURIComponent(
-        `Имя: ${payload.name}\nТелефон: ${payload.phone}\nКто занимается: ${payload.audience}\nКомментарий: ${payload.comment}\nЯзык: ${lang}\nИсточник: ${payload.utm || '-'}`,
+        `Имя: ${payload.name}\nТелефон: ${payload.phone}\nВозраст ребёнка: ${payload.age}\nКомментарий: ${payload.comment}\nЯзык: ${lang}\nИсточник: ${payload.utm || '-'}`,
       )
       window.location.href = `mailto:${email}?subject=${subject}&body=${body}`
       setStatus('sent')
@@ -69,8 +80,6 @@ export function Contacts() {
 
         <div className="grid gap-10 lg:grid-cols-2">
           <div data-reveal className="space-y-7">
-            <p className="max-w-md text-white/75">{t(content.contacts.cta)}</p>
-
             <div className="rounded-2xl border border-white/10 bg-ink p-6">
               <h3 className="font-display text-lg font-semibold uppercase tracking-wide">
                 {t(content.form.trialInfo.title)}
@@ -116,6 +125,16 @@ export function Contacts() {
                   <Mail size={18} className="text-brand" /> {email}
                 </a>
               )}
+              {/* Быстрый канал для родителей: чат с готовым текстом заявки, без анкеты. */}
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2.5 rounded-full border border-white/25 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:border-white/60"
+              >
+                <WhatsAppIcon size={18} className="text-brand" />
+                {t(content.contacts.whatsappLabel)}
+              </a>
             </div>
 
             <div className="space-y-3">
@@ -189,17 +208,16 @@ export function Contacts() {
                 </div>
 
                 <label className="block">
-                  <span className="mb-1.5 block text-sm font-medium text-white/70">{t(content.form.audience)}</span>
-                  <select
-                    name="audience"
-                    className="w-full rounded-xl border border-white/15 bg-ink-2 px-4 py-3 text-base text-white outline-none focus:border-brand sm:text-sm"
-                  >
-                    {content.form.audienceOptions.map((option) => (
-                      <option key={option.ru} value={option.ru}>
-                        {t(option)}
-                      </option>
-                    ))}
-                  </select>
+                  <span className="mb-1.5 block text-sm font-medium text-white/70">{t(content.form.age)}</span>
+                  <input
+                    type="text"
+                    name="age"
+                    required
+                    inputMode="numeric"
+                    className="w-full rounded-xl border border-white/15 bg-ink-2 px-4 py-3 text-base text-white placeholder-white/30 outline-none focus:border-brand sm:text-sm"
+                    placeholder={t(content.form.agePlaceholder)}
+                  />
+                  <span className="mt-1.5 block text-xs leading-relaxed text-white/55">{t(content.form.ageHint)}</span>
                 </label>
 
                 <label className="block">
@@ -223,6 +241,9 @@ export function Contacts() {
                     </span>
                   </div>
                 )}
+
+                {/* Honeypot для Web3Forms: люди его не видят, боты отмечают и отсеиваются. */}
+                <input type="checkbox" name="botcheck" tabIndex={-1} autoComplete="off" className="hidden" />
 
                 <button
                   type="submit"
