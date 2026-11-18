@@ -318,7 +318,6 @@ export const content = {
         lv: 'Karatē un vispārējā fiziskā sagatavotība rotaļu veidā: koordinācija, lokanība, disciplīnas ieradumi.',
       },
       sessions: { ru: '2 раза в неделю', en: '2× per week', lv: '2× nedēļā' },
-      duration: { ru: '45 мин', en: '45 min', lv: '45 min' },
       tag: 'kids-4-6',
     },
     {
@@ -356,18 +355,6 @@ export const content = {
       },
       sessions: { ru: '2 раза в неделю', en: '2× per week', lv: '2× nedēļā' },
       tag: 'adults',
-    },
-    {
-      id: 'competition',
-      ageGroup: 'по возрасту',
-      title: { ru: 'Соревновательная группа', en: 'Competition group', lv: 'Sacensību grupa' },
-      description: {
-        ru: 'Для тех, кто хочет выступать: интенсивные тренировки, сборы и лагеря.',
-        en: 'For those who want to compete: intensive training, camps and training sessions.',
-        lv: 'Tiem, kas vēlas startēt: intensīvi treniņi, nometnes un treniņsalidojumi.',
-      },
-      sessions: { ru: '3-5 раз в неделю + сборы', en: '3-5× per week + camps', lv: '3-5× nedēļā + nometnes' },
-      tag: 'competition',
     },
   ] as Program[],
 

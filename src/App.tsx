@@ -54,8 +54,6 @@ function Site() {
         <Programs />
         <Halls />
         <Coaches />
-        <Achievements />
-        <Reviews />
         {content.social.enabled && <ClubLife />}
         <Pricing />
         <Faq />
