@@ -18,6 +18,7 @@ import type {
   TrainingGroup,
   TrustItem,
 } from './types'
+import { publicAsset } from './lib/assets'
 
 export const LANGS = ['ru', 'en', 'lv'] as const
 
@@ -176,7 +177,7 @@ export const content = {
   hero: {
     /** Главное фото первого экрана. Пока файл есть - 3D-сцена не рендерится (быстрее и нагляднее). */
     image: {
-      src: '/hero.jpg',
+      src: publicAsset('/hero.jpg'),
       alt: {
         ru: 'Тренировка в зале Vasilyev Karate Club - карате в Риге с 1984 года',
         en: 'Training at Vasilyev Karate Club - karate in Riga since 1984',
@@ -375,7 +376,7 @@ export const content = {
         { day: 'sat', time: '10:00-13:00' },
       ],
       mapUrl: 'https://www.google.com/maps/search/?api=1&query=Ik%C5%A1%C4%B7iles+iela+6,+R%C4%ABga',
-      photo: '/images/halls/ikskiles.jpg',
+      photo: publicAsset('/images/halls/ikskiles.jpg'),
       convenience: {
         ru: 'Удобно для жителей Кенгарагса и центра Риги: остановки транспорта и парковка у школы, 5 минут пешком от остановки «Ikšķiles iela».',
         en: 'Convenient for Ķengarags and central Riga residents: transport stops and parking by the school, 5 minutes on foot from the "Ikšķiles iela" stop.',
@@ -397,7 +398,7 @@ export const content = {
         { day: 'sat', time: '13:00-16:00' },
       ],
       mapUrl: 'https://www.google.com/maps/search/?api=1&query=Latgales+iela+322,+R%C4%ABga',
-      photo: '/images/halls/latgales.jpg',
+      photo: publicAsset('/images/halls/latgales.jpg'),
       convenience: {
         ru: 'Рядом Кенгарагс и центр: трамвай и автобус по Latgales iela, парковка во дворе - легко добраться из любого района Риги.',
         en: 'Close to Ķengarags and the centre: tram and bus along Latgales iela, parking on site - easy to reach from any district of Riga.',
@@ -415,7 +416,7 @@ export const content = {
   coaches: [
     {
       id: 'leonid',
-      photo: '/leonid.jpg',
+      photo: publicAsset('/leonid.jpg'),
       name: 'Leonids Vasiļjevs',
       dan: 8,
       description: {
@@ -431,7 +432,7 @@ export const content = {
     },
     {
       id: 'zhanna',
-      photo: '/zanna.jpg',
+      photo: publicAsset('/zanna.jpg'),
       name: 'Žanna Vasiļjeva',
       dan: 5,
       description: {
@@ -447,7 +448,7 @@ export const content = {
     },
     {
       id: 'diana',
-      photo: '/diana.jpg',
+      photo: publicAsset('/diana.jpg'),
       name: 'Diana Tokare',
       dan: 2,
       description: {
@@ -463,7 +464,7 @@ export const content = {
     },
     {
       id: 'olga',
-      photo: '/olga.jpg',
+      photo: publicAsset('/olga.jpg'),
       name: 'Olga Halvitova',
       /* Степени карате нет - на бейдже указываем направление работы, а не выдуманный дан. */
       badge: {

@@ -2,20 +2,20 @@
   "name": "Vasilyev Karate Club",
   "short_name": "Vasilyev Karate",
   "description": "Карате в Риге (Кенгарагс) для детей с 4 лет и взрослых с 1984 года.",
-  "start_url": "/",
-  "scope": "/",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#0a0f1f",
   "theme_color": "#0a0f1f",
   "icons": [
     {
-      "src": "/favicon.png",
+      "src": "./favicon.png",
       "sizes": "any",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/logo.png",
+      "src": "./logo.png",
       "sizes": "any",
       "type": "image/png",
       "purpose": "maskable"

@@ -1,4 +1,5 @@
 import { useState, type ReactNode } from 'react'
+import { publicAsset } from '../lib/assets'
 
 interface SmartImageProps {
   /** Путь к файлу в public/, напр. '/leonid.jpg'. Пусто - сразу показываем фолбэк. */
@@ -28,6 +29,8 @@ export function SmartImage({
 }: SmartImageProps) {
   const [failed, setFailed] = useState(false)
   const showFallback = !src || failed
+  const resolvedSrc =
+    src?.startsWith('/') ? publicAsset(src) : src
 
   return (
     <div className={`relative overflow-hidden bg-ink-3 ${aspect} ${className}`}>
@@ -37,7 +40,7 @@ export function SmartImage({
         </div>
       ) : (
         <img
-          src={src}
+          src={resolvedSrc}
           alt={alt}
           loading={eager ? 'eager' : 'lazy'}
           fetchPriority={eager ? 'high' : undefined}

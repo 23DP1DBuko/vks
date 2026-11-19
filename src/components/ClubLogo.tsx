@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { publicAsset } from '../lib/assets'
 
 /**
  * Логотип клуба. Берёт файл /logo.png (public/logo.png) - как только
@@ -20,7 +21,7 @@ export function ClubLogo({ className = 'h-10 w-10' }: { className?: string }) {
 
   return (
     <img
-      src="/logo.png"
+      src={publicAsset('/logo.png')}
       alt="Vasilyev Karate Club"
       className={`${className} rounded-full bg-white object-contain`}
       onError={() => setFailed(true)}
